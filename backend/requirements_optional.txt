@@ -1,0 +1,26 @@
+# Optional dependencies for enhanced storage performance
+# Install with: pip install -r requirements_optional.txt
+
+# Parquet support for high-performance columnar storage
+# Best for analytics and large datasets
+pyarrow>=10.0.0
+
+# PostgreSQL support for production databases
+# Best for enterprise deployments and high concurrency
+psycopg2-binary>=2.9.0
+
+# SQLAlchemy for advanced database operations
+# Provides ORM and advanced query capabilities
+sqlalchemy>=2.0.0
+
+# Additional performance enhancements
+# Fast JSON processing for metadata
+orjson>=3.8.0
+
+# Memory-efficient data processing
+# Useful for large portfolio datasets
+polars>=0.19.0
+
+# Compression libraries for better storage efficiency
+lz4>=4.0.0
+zstandard>=0.20.0 

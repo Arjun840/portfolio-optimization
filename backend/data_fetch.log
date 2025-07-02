@@ -1,0 +1,105 @@
+2025-07-01 18:24:05,482 - INFO - Created data directory: data
+2025-07-01 18:24:05,482 - INFO - Initialized fetcher with 46 assets
+2025-07-01 18:24:05,482 - INFO - === Starting Portfolio Data Fetching Pipeline ===
+2025-07-01 18:24:05,482 - INFO - Fetching data from 2015-07-04 to 2025-07-01
+2025-07-01 18:24:05,482 - INFO - Fetching data for AAPL (Apple Inc.)
+2025-07-01 18:24:06,238 - INFO - Successfully fetched 2512 days of data for AAPL
+2025-07-01 18:24:06,238 - INFO - Fetching data for MSFT (Microsoft Corporation)
+2025-07-01 18:24:06,526 - INFO - Successfully fetched 2512 days of data for MSFT
+2025-07-01 18:24:06,526 - INFO - Fetching data for GOOGL (Alphabet Inc.)
+2025-07-01 18:24:06,712 - INFO - Successfully fetched 2512 days of data for GOOGL
+2025-07-01 18:24:06,712 - INFO - Fetching data for NVDA (NVIDIA Corporation)
+2025-07-01 18:24:07,072 - INFO - Successfully fetched 2512 days of data for NVDA
+2025-07-01 18:24:07,072 - INFO - Fetching data for META (Meta Platforms Inc.)
+2025-07-01 18:24:07,313 - INFO - Successfully fetched 2512 days of data for META
+2025-07-01 18:24:07,313 - INFO - Fetching data for TSLA (Tesla Inc.)
+2025-07-01 18:24:07,580 - INFO - Successfully fetched 2512 days of data for TSLA
+2025-07-01 18:24:07,580 - INFO - Fetching data for JNJ (Johnson & Johnson)
+2025-07-01 18:24:08,154 - INFO - Successfully fetched 2512 days of data for JNJ
+2025-07-01 18:24:08,154 - INFO - Fetching data for PFE (Pfizer Inc.)
+2025-07-01 18:24:08,611 - INFO - Successfully fetched 2512 days of data for PFE
+2025-07-01 18:24:08,611 - INFO - Fetching data for UNH (UnitedHealth Group)
+2025-07-01 18:24:08,936 - INFO - Successfully fetched 2512 days of data for UNH
+2025-07-01 18:24:08,936 - INFO - Fetching data for ABBV (AbbVie Inc.)
+2025-07-01 18:24:09,282 - INFO - Successfully fetched 2512 days of data for ABBV
+2025-07-01 18:24:09,282 - INFO - Fetching data for JPM (JPMorgan Chase & Co.)
+2025-07-01 18:24:09,595 - INFO - Successfully fetched 2512 days of data for JPM
+2025-07-01 18:24:09,596 - INFO - Fetching data for BAC (Bank of America Corp)
+2025-07-01 18:24:10,021 - INFO - Successfully fetched 2512 days of data for BAC
+2025-07-01 18:24:10,021 - INFO - Fetching data for WFC (Wells Fargo & Company)
+2025-07-01 18:24:10,430 - INFO - Successfully fetched 2512 days of data for WFC
+2025-07-01 18:24:10,430 - INFO - Fetching data for GS (Goldman Sachs Group)
+2025-07-01 18:24:10,755 - INFO - Successfully fetched 2512 days of data for GS
+2025-07-01 18:24:10,755 - INFO - Fetching data for V (Visa Inc.)
+2025-07-01 18:24:11,012 - INFO - Successfully fetched 2512 days of data for V
+2025-07-01 18:24:11,012 - INFO - Fetching data for AMZN (Amazon.com Inc.)
+2025-07-01 18:24:11,215 - INFO - Successfully fetched 2512 days of data for AMZN
+2025-07-01 18:24:11,215 - INFO - Fetching data for HD (Home Depot Inc.)
+2025-07-01 18:24:11,554 - INFO - Successfully fetched 2512 days of data for HD
+2025-07-01 18:24:11,554 - INFO - Fetching data for MCD (McDonald's Corporation)
+2025-07-01 18:24:11,945 - INFO - Successfully fetched 2512 days of data for MCD
+2025-07-01 18:24:11,945 - INFO - Fetching data for NIKE (Nike Inc.)
+2025-07-01 18:24:12,396 - ERROR - HTTP Error 404: 
+2025-07-01 18:24:12,557 - ERROR - $NIKE: possibly delisted; no timezone found
+2025-07-01 18:24:12,557 - WARNING - No data retrieved for NIKE
+2025-07-01 18:24:12,557 - INFO - Fetching data for SBUX (Starbucks Corporation)
+2025-07-01 18:24:12,851 - INFO - Successfully fetched 2512 days of data for SBUX
+2025-07-01 18:24:12,852 - INFO - Fetching data for PG (Procter & Gamble Co.)
+2025-07-01 18:24:13,204 - INFO - Successfully fetched 2512 days of data for PG
+2025-07-01 18:24:13,204 - INFO - Fetching data for KO (Coca-Cola Company)
+2025-07-01 18:24:13,611 - INFO - Successfully fetched 2512 days of data for KO
+2025-07-01 18:24:13,611 - INFO - Fetching data for PEP (PepsiCo Inc.)
+2025-07-01 18:24:13,996 - INFO - Successfully fetched 2512 days of data for PEP
+2025-07-01 18:24:13,996 - INFO - Fetching data for WMT (Walmart Inc.)
+2025-07-01 18:24:14,306 - INFO - Successfully fetched 2512 days of data for WMT
+2025-07-01 18:24:14,306 - INFO - Fetching data for XOM (Exxon Mobil Corporation)
+2025-07-01 18:24:14,713 - INFO - Successfully fetched 2512 days of data for XOM
+2025-07-01 18:24:14,713 - INFO - Fetching data for CVX (Chevron Corporation)
+2025-07-01 18:24:15,324 - INFO - Successfully fetched 2512 days of data for CVX
+2025-07-01 18:24:15,324 - INFO - Fetching data for COP (ConocoPhillips)
+2025-07-01 18:24:15,686 - INFO - Successfully fetched 2512 days of data for COP
+2025-07-01 18:24:15,687 - INFO - Fetching data for BA (Boeing Company)
+2025-07-01 18:24:16,047 - INFO - Successfully fetched 2512 days of data for BA
+2025-07-01 18:24:16,047 - INFO - Fetching data for CAT (Caterpillar Inc.)
+2025-07-01 18:24:16,378 - INFO - Successfully fetched 2512 days of data for CAT
+2025-07-01 18:24:16,379 - INFO - Fetching data for GE (General Electric Company)
+2025-07-01 18:24:16,732 - INFO - Successfully fetched 2512 days of data for GE
+2025-07-01 18:24:16,732 - INFO - Fetching data for VZ (Verizon Communications)
+2025-07-01 18:24:17,069 - INFO - Successfully fetched 2512 days of data for VZ
+2025-07-01 18:24:17,069 - INFO - Fetching data for T (AT&T Inc.)
+2025-07-01 18:24:17,459 - INFO - Successfully fetched 2512 days of data for T
+2025-07-01 18:24:17,460 - INFO - Fetching data for DIS (Walt Disney Company)
+2025-07-01 18:24:17,885 - INFO - Successfully fetched 2512 days of data for DIS
+2025-07-01 18:24:17,885 - INFO - Fetching data for NEE (NextEra Energy Inc.)
+2025-07-01 18:24:18,218 - INFO - Successfully fetched 2512 days of data for NEE
+2025-07-01 18:24:18,218 - INFO - Fetching data for AMT (American Tower Corporation)
+2025-07-01 18:24:18,475 - INFO - Successfully fetched 2512 days of data for AMT
+2025-07-01 18:24:18,475 - INFO - Fetching data for LIN (Linde plc)
+2025-07-01 18:24:18,735 - INFO - Successfully fetched 2512 days of data for LIN
+2025-07-01 18:24:18,735 - INFO - Fetching data for NEM (Newmont Corporation)
+2025-07-01 18:24:19,035 - INFO - Successfully fetched 2512 days of data for NEM
+2025-07-01 18:24:19,035 - INFO - Fetching data for SPY (S&P 500 ETF)
+2025-07-01 18:24:19,476 - INFO - Successfully fetched 2512 days of data for SPY
+2025-07-01 18:24:19,476 - INFO - Fetching data for QQQ (Nasdaq 100 ETF)
+2025-07-01 18:24:19,772 - INFO - Successfully fetched 2512 days of data for QQQ
+2025-07-01 18:24:19,772 - INFO - Fetching data for IWM (Russell 2000 ETF)
+2025-07-01 18:24:20,038 - INFO - Successfully fetched 2512 days of data for IWM
+2025-07-01 18:24:20,038 - INFO - Fetching data for VTI (Total Stock Market ETF)
+2025-07-01 18:24:20,293 - INFO - Successfully fetched 2512 days of data for VTI
+2025-07-01 18:24:20,293 - INFO - Fetching data for EFA (International Developed Markets ETF)
+2025-07-01 18:24:20,547 - INFO - Successfully fetched 2512 days of data for EFA
+2025-07-01 18:24:20,547 - INFO - Fetching data for EEM (Emerging Markets ETF)
+2025-07-01 18:24:20,889 - INFO - Successfully fetched 2512 days of data for EEM
+2025-07-01 18:24:20,889 - INFO - Fetching data for TLT (Long-Term Treasury ETF)
+2025-07-01 18:24:21,154 - INFO - Successfully fetched 2512 days of data for TLT
+2025-07-01 18:24:21,154 - INFO - Fetching data for GLD (Gold ETF)
+2025-07-01 18:24:21,336 - INFO - Successfully fetched 2512 days of data for GLD
+2025-07-01 18:24:21,337 - INFO - Fetching data for VNQ (Real Estate ETF)
+2025-07-01 18:24:21,578 - INFO - Successfully fetched 2512 days of data for VNQ
+2025-07-01 18:24:21,579 - INFO - Successfully fetched data for 45 assets
+2025-07-01 18:24:21,579 - WARNING - Failed to fetch data for: NIKE
+2025-07-01 18:24:21,583 - INFO - Created price matrix with shape: (2512, 45)
+2025-07-01 18:24:21,586 - INFO - Calculated returns matrix with shape: (2511, 45)
+2025-07-01 18:24:23,003 - INFO - Data saved to data directory
+2025-07-01 18:24:23,003 - INFO - === Data Fetching Pipeline Completed ===
+2025-07-01 18:32:54,967 - INFO - Initialized fetcher with 46 assets
