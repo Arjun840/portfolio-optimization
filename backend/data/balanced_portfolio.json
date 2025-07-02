@@ -1,0 +1,532 @@
+{
+  "total_amount": 100000,
+  "allocations": [
+    {
+      "symbol": "GLD",
+      "sector": "ETF_Commodity",
+      "cluster": 0,
+      "amount": 3333.3333333333335,
+      "weight": 0.03333333333333333,
+      "sharpe_ratio": 0.7715828646444625,
+      "volatility": 0.1441232012338689,
+      "recent_return": 0.0731183172294007,
+      "selection_score": 0.7438202251568549,
+      "recommendation": "Strong Buy"
+    },
+    {
+      "symbol": "NEM",
+      "sector": "Materials",
+      "cluster": 0,
+      "amount": 3333.3333333333335,
+      "weight": 0.03333333333333333,
+      "sharpe_ratio": 0.4998737011419637,
+      "volatility": 0.358805023818498,
+      "recent_return": 0.2174032646236574,
+      "selection_score": 0.6157311561985572,
+      "recommendation": "Buy"
+    },
+    {
+      "symbol": "LIN",
+      "sector": "Materials",
+      "cluster": 0,
+      "amount": 3333.3333333333335,
+      "weight": 0.03333333333333333,
+      "sharpe_ratio": 0.8028988777084662,
+      "volatility": 0.2253020004737983,
+      "recent_return": 0.0200277758774678,
+      "selection_score": 0.4932567439128321,
+      "recommendation": "Cautious"
+    },
+    {
+      "symbol": "WMT",
+      "sector": "Consumer",
+      "cluster": 1,
+      "amount": 6000.0,
+      "weight": 0.06,
+      "sharpe_ratio": 0.8826066561003699,
+      "volatility": 0.2027770091043762,
+      "recent_return": 0.1234461905462238,
+      "selection_score": 0.6714208762080291,
+      "recommendation": "Buy"
+    },
+    {
+      "symbol": "T",
+      "sector": "Communication",
+      "cluster": 1,
+      "amount": 6000.0,
+      "weight": 0.06,
+      "sharpe_ratio": 0.493292011131794,
+      "volatility": 0.2265049860513325,
+      "recent_return": 0.0378696799319917,
+      "selection_score": 0.5398664985021632,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "KO",
+      "sector": "Consumer",
+      "cluster": 1,
+      "amount": 6000.0,
+      "weight": 0.06,
+      "sharpe_ratio": 0.6795944092823287,
+      "volatility": 0.1746387214486714,
+      "recent_return": 0.0125483421214198,
+      "selection_score": 0.5312252214529936,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "AMT",
+      "sector": "REIT",
+      "cluster": 1,
+      "amount": 6000.0,
+      "weight": 0.06,
+      "sharpe_ratio": 0.5476905282769259,
+      "volatility": 0.2515875202586241,
+      "recent_return": 0.0419015898228212,
+      "selection_score": 0.527705450354971,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "TLT",
+      "sector": "ETF_Bonds",
+      "cluster": 1,
+      "amount": 6000.0,
+      "weight": 0.06,
+      "sharpe_ratio": 0.0419948199182163,
+      "volatility": 0.1484934410532157,
+      "recent_return": -0.0101621977607463,
+      "selection_score": 0.5191098743940108,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "EFA",
+      "sector": "ETF_International",
+      "cluster": 2,
+      "amount": 7000.0,
+      "weight": 0.07,
+      "sharpe_ratio": 0.5531162944728749,
+      "volatility": 0.1657089916411714,
+      "recent_return": 0.0934902708655649,
+      "selection_score": 0.5386538447488242,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "QQQ",
+      "sector": "ETF_Tech",
+      "cluster": 2,
+      "amount": 7000.0,
+      "weight": 0.07,
+      "sharpe_ratio": 0.8942932400509118,
+      "volatility": 0.2203601187229736,
+      "recent_return": 0.1271821080842476,
+      "selection_score": 0.5374349555052076,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "EEM",
+      "sector": "ETF_Emerging",
+      "cluster": 2,
+      "amount": 7000.0,
+      "weight": 0.07,
+      "sharpe_ratio": 0.3688633019380119,
+      "volatility": 0.2023605012744462,
+      "recent_return": 0.1093328973397556,
+      "selection_score": 0.5280128408805279,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "SPY",
+      "sector": "ETF_Broad",
+      "cluster": 2,
+      "amount": 7000.0,
+      "weight": 0.07,
+      "sharpe_ratio": 0.8295627454748933,
+      "volatility": 0.1732363839712824,
+      "recent_return": 0.069634425673501,
+      "selection_score": 0.5025099726722473,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "VTI",
+      "sector": "ETF_Broad",
+      "cluster": 2,
+      "amount": 7000.0,
+      "weight": 0.07,
+      "sharpe_ratio": 0.7867837875588254,
+      "volatility": 0.1762341351810878,
+      "recent_return": 0.0727823550474642,
+      "selection_score": 0.5004703144193628,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "MSFT",
+      "sector": "Technology",
+      "cluster": 3,
+      "amount": 5000.0,
+      "weight": 0.05,
+      "sharpe_ratio": 1.1010809938975334,
+      "volatility": 0.2656250775970772,
+      "recent_return": 0.2982783636722561,
+      "selection_score": 0.5740340778461755,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "JPM",
+      "sector": "Financial",
+      "cluster": 3,
+      "amount": 5000.0,
+      "weight": 0.05,
+      "sharpe_ratio": 0.7776126852368794,
+      "volatility": 0.2637241959244966,
+      "recent_return": 0.2011352645567363,
+      "selection_score": 0.5736876185157183,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "CAT",
+      "sector": "Industrial",
+      "cluster": 3,
+      "amount": 5000.0,
+      "weight": 0.05,
+      "sharpe_ratio": 0.7667993538012413,
+      "volatility": 0.3005972640529194,
+      "recent_return": 0.1804405444610963,
+      "selection_score": 0.569576705779621,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "NVDA",
+      "sector": "Technology",
+      "cluster": 3,
+      "amount": 5000.0,
+      "weight": 0.05,
+      "sharpe_ratio": 1.4064218766000922,
+      "volatility": 0.4868876399485514,
+      "recent_return": 0.4084717699694247,
+      "selection_score": 0.5499186449803207,
+      "recommendation": "Hold"
+    },
+    {
+      "symbol": "AMZN",
+      "sector": "Consumer",
+      "cluster": 3,
+      "amount": 5000.0,
+      "weight": 0.05,
+      "sharpe_ratio": 0.8636740932648208,
+      "volatility": 0.3252531408996332,
+      "recent_return": 0.1233958266511012,
+      "selection_score": 0.5464233137522453,
+      "recommendation": "Hold"
+    }
+  ],
+  "cluster_breakdown": {
+    "0": {
+      "cluster_id": 0,
+      "cluster_weight": 0.1,
+      "cluster_amount": 10000.0,
+      "assets": [
+        {
+          "symbol": "GLD",
+          "sector": "ETF_Commodity",
+          "cluster": 0,
+          "amount": 3333.3333333333335,
+          "weight": 0.03333333333333333,
+          "sharpe_ratio": 0.7715828646444625,
+          "volatility": 0.1441232012338689,
+          "recent_return": 0.0731183172294007,
+          "selection_score": 0.7438202251568549,
+          "recommendation": "Strong Buy"
+        },
+        {
+          "symbol": "NEM",
+          "sector": "Materials",
+          "cluster": 0,
+          "amount": 3333.3333333333335,
+          "weight": 0.03333333333333333,
+          "sharpe_ratio": 0.4998737011419637,
+          "volatility": 0.358805023818498,
+          "recent_return": 0.2174032646236574,
+          "selection_score": 0.6157311561985572,
+          "recommendation": "Buy"
+        },
+        {
+          "symbol": "LIN",
+          "sector": "Materials",
+          "cluster": 0,
+          "amount": 3333.3333333333335,
+          "weight": 0.03333333333333333,
+          "sharpe_ratio": 0.8028988777084662,
+          "volatility": 0.2253020004737983,
+          "recent_return": 0.0200277758774678,
+          "selection_score": 0.4932567439128321,
+          "recommendation": "Cautious"
+        }
+      ]
+    },
+    "1": {
+      "cluster_id": 1,
+      "cluster_weight": 0.3,
+      "cluster_amount": 30000.0,
+      "assets": [
+        {
+          "symbol": "WMT",
+          "sector": "Consumer",
+          "cluster": 1,
+          "amount": 6000.0,
+          "weight": 0.06,
+          "sharpe_ratio": 0.8826066561003699,
+          "volatility": 0.2027770091043762,
+          "recent_return": 0.1234461905462238,
+          "selection_score": 0.6714208762080291,
+          "recommendation": "Buy"
+        },
+        {
+          "symbol": "T",
+          "sector": "Communication",
+          "cluster": 1,
+          "amount": 6000.0,
+          "weight": 0.06,
+          "sharpe_ratio": 0.493292011131794,
+          "volatility": 0.2265049860513325,
+          "recent_return": 0.0378696799319917,
+          "selection_score": 0.5398664985021632,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "KO",
+          "sector": "Consumer",
+          "cluster": 1,
+          "amount": 6000.0,
+          "weight": 0.06,
+          "sharpe_ratio": 0.6795944092823287,
+          "volatility": 0.1746387214486714,
+          "recent_return": 0.0125483421214198,
+          "selection_score": 0.5312252214529936,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "AMT",
+          "sector": "REIT",
+          "cluster": 1,
+          "amount": 6000.0,
+          "weight": 0.06,
+          "sharpe_ratio": 0.5476905282769259,
+          "volatility": 0.2515875202586241,
+          "recent_return": 0.0419015898228212,
+          "selection_score": 0.527705450354971,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "TLT",
+          "sector": "ETF_Bonds",
+          "cluster": 1,
+          "amount": 6000.0,
+          "weight": 0.06,
+          "sharpe_ratio": 0.0419948199182163,
+          "volatility": 0.1484934410532157,
+          "recent_return": -0.0101621977607463,
+          "selection_score": 0.5191098743940108,
+          "recommendation": "Hold"
+        }
+      ]
+    },
+    "2": {
+      "cluster_id": 2,
+      "cluster_weight": 0.35,
+      "cluster_amount": 35000.0,
+      "assets": [
+        {
+          "symbol": "EFA",
+          "sector": "ETF_International",
+          "cluster": 2,
+          "amount": 7000.0,
+          "weight": 0.07,
+          "sharpe_ratio": 0.5531162944728749,
+          "volatility": 0.1657089916411714,
+          "recent_return": 0.0934902708655649,
+          "selection_score": 0.5386538447488242,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "QQQ",
+          "sector": "ETF_Tech",
+          "cluster": 2,
+          "amount": 7000.0,
+          "weight": 0.07,
+          "sharpe_ratio": 0.8942932400509118,
+          "volatility": 0.2203601187229736,
+          "recent_return": 0.1271821080842476,
+          "selection_score": 0.5374349555052076,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "EEM",
+          "sector": "ETF_Emerging",
+          "cluster": 2,
+          "amount": 7000.0,
+          "weight": 0.07,
+          "sharpe_ratio": 0.3688633019380119,
+          "volatility": 0.2023605012744462,
+          "recent_return": 0.1093328973397556,
+          "selection_score": 0.5280128408805279,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "SPY",
+          "sector": "ETF_Broad",
+          "cluster": 2,
+          "amount": 7000.0,
+          "weight": 0.07,
+          "sharpe_ratio": 0.8295627454748933,
+          "volatility": 0.1732363839712824,
+          "recent_return": 0.069634425673501,
+          "selection_score": 0.5025099726722473,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "VTI",
+          "sector": "ETF_Broad",
+          "cluster": 2,
+          "amount": 7000.0,
+          "weight": 0.07,
+          "sharpe_ratio": 0.7867837875588254,
+          "volatility": 0.1762341351810878,
+          "recent_return": 0.0727823550474642,
+          "selection_score": 0.5004703144193628,
+          "recommendation": "Hold"
+        }
+      ]
+    },
+    "3": {
+      "cluster_id": 3,
+      "cluster_weight": 0.25,
+      "cluster_amount": 25000.0,
+      "assets": [
+        {
+          "symbol": "MSFT",
+          "sector": "Technology",
+          "cluster": 3,
+          "amount": 5000.0,
+          "weight": 0.05,
+          "sharpe_ratio": 1.1010809938975334,
+          "volatility": 0.2656250775970772,
+          "recent_return": 0.2982783636722561,
+          "selection_score": 0.5740340778461755,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "JPM",
+          "sector": "Financial",
+          "cluster": 3,
+          "amount": 5000.0,
+          "weight": 0.05,
+          "sharpe_ratio": 0.7776126852368794,
+          "volatility": 0.2637241959244966,
+          "recent_return": 0.2011352645567363,
+          "selection_score": 0.5736876185157183,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "CAT",
+          "sector": "Industrial",
+          "cluster": 3,
+          "amount": 5000.0,
+          "weight": 0.05,
+          "sharpe_ratio": 0.7667993538012413,
+          "volatility": 0.3005972640529194,
+          "recent_return": 0.1804405444610963,
+          "selection_score": 0.569576705779621,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "NVDA",
+          "sector": "Technology",
+          "cluster": 3,
+          "amount": 5000.0,
+          "weight": 0.05,
+          "sharpe_ratio": 1.4064218766000922,
+          "volatility": 0.4868876399485514,
+          "recent_return": 0.4084717699694247,
+          "selection_score": 0.5499186449803207,
+          "recommendation": "Hold"
+        },
+        {
+          "symbol": "AMZN",
+          "sector": "Consumer",
+          "cluster": 3,
+          "amount": 5000.0,
+          "weight": 0.05,
+          "sharpe_ratio": 0.8636740932648208,
+          "volatility": 0.3252531408996332,
+          "recent_return": 0.1233958266511012,
+          "selection_score": 0.5464233137522453,
+          "recommendation": "Hold"
+        }
+      ]
+    }
+  },
+  "sector_breakdown": {
+    "ETF_Commodity": {
+      "amount": 3333.3333333333335,
+      "weight": 0.03333333333333333
+    },
+    "Materials": {
+      "amount": 6666.666666666667,
+      "weight": 0.06666666666666667
+    },
+    "Consumer": {
+      "amount": 17000.0,
+      "weight": 0.16999999999999998
+    },
+    "Communication": {
+      "amount": 6000.0,
+      "weight": 0.06
+    },
+    "REIT": {
+      "amount": 6000.0,
+      "weight": 0.06
+    },
+    "ETF_Bonds": {
+      "amount": 6000.0,
+      "weight": 0.06
+    },
+    "ETF_International": {
+      "amount": 7000.0,
+      "weight": 0.07
+    },
+    "ETF_Tech": {
+      "amount": 7000.0,
+      "weight": 0.07
+    },
+    "ETF_Emerging": {
+      "amount": 7000.0,
+      "weight": 0.07
+    },
+    "ETF_Broad": {
+      "amount": 14000.0,
+      "weight": 0.14
+    },
+    "Technology": {
+      "amount": 10000.0,
+      "weight": 0.1
+    },
+    "Financial": {
+      "amount": 5000.0,
+      "weight": 0.05
+    },
+    "Industrial": {
+      "amount": 5000.0,
+      "weight": 0.05
+    }
+  },
+  "performance_metrics": {
+    "weighted_sharpe": 0.7139186929371225,
+    "weighted_volatility": 0.23227181660234655,
+    "expected_return": 0.16582319171487828,
+    "num_assets": 18,
+    "num_clusters": 4,
+    "num_sectors": 13
+  },
+  "strategy": "Balanced",
+  "risk_profile": "Moderate",
+  "target_return": "12-16% annually"
+}

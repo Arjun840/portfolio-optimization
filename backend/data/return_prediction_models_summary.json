@@ -1,0 +1,1382 @@
+{
+  "AAPL": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.07568843650751089,
+          "test_r2": -0.09025024280972715,
+          "train_rmse": 0.08079320054924956,
+          "test_rmse": 0.07222512154071223
+        },
+        "ridge_regression": {
+          "train_r2": 0.07568735515121472,
+          "test_r2": -0.09018008143374923,
+          "train_rmse": 0.08079324780940188,
+          "test_rmse": 0.0722227975350677
+        },
+        "random_forest": {
+          "train_r2": 0.7442472112712698,
+          "test_r2": -0.4741500293152403,
+          "train_rmse": 0.04249871594638403,
+          "test_rmse": 0.08398389801106236,
+          "feature_importance": {
+            "recent_1m_return": 0.058951997566265145,
+            "recent_3m_return": 0.14144213987071788,
+            "recent_1m_volatility": 0.14131361973634465,
+            "recent_3m_volatility": 0.2712148998788522,
+            "momentum_1m": 0.007801797073983463,
+            "return_lag_1": 0.0073496429951007015,
+            "return_lag_5": 0.008078330039256855,
+            "month": 0.14681603837449375,
+            "quarter": 0.03839710038251654,
+            "market_return_1m": 0.06369501529986048,
+            "market_volatility": 0.11493941878260817
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6993636380663246,
+          "test_r2": -0.42767310277262127,
+          "train_rmse": 0.046077231084096275,
+          "test_rmse": 0.08264937506151612,
+          "feature_importance": {
+            "recent_1m_return": 0.05678151380120807,
+            "recent_3m_return": 0.11228048886841004,
+            "recent_1m_volatility": 0.12529636891574358,
+            "recent_3m_volatility": 0.29973788311409166,
+            "momentum_1m": 0.0007168106264831054,
+            "return_lag_1": 0.0036793443165419027,
+            "return_lag_5": 0.00145430634823946,
+            "month": 0.18810425201212994,
+            "quarter": 0.03570782760904324,
+            "market_return_1m": 0.06869289933814766,
+            "market_volatility": 0.10754830504996137
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.16182725988388535,
+          "test_r2": -0.11830267338902822,
+          "train_rmse": 0.12548974473576546,
+          "test_rmse": 0.1260915970812644
+        },
+        "ridge_regression": {
+          "train_r2": 0.16182645612941726,
+          "test_r2": -0.11766652251446152,
+          "train_rmse": 0.12548980490410191,
+          "test_rmse": 0.12605572812900157
+        },
+        "random_forest": {
+          "train_r2": 0.883113185230366,
+          "test_r2": -0.4678653998411282,
+          "train_rmse": 0.04686236818169828,
+          "test_rmse": 0.14446065536168326,
+          "feature_importance": {
+            "recent_1m_return": 0.04688428997864421,
+            "recent_3m_return": 0.09963407979912789,
+            "recent_1m_volatility": 0.07611099970784288,
+            "recent_3m_volatility": 0.45332494473312607,
+            "momentum_1m": 0.002554911535995123,
+            "return_lag_1": 0.0027476266074599924,
+            "return_lag_5": 0.0035533769432448343,
+            "month": 0.09955400532674163,
+            "quarter": 0.028491315744116168,
+            "market_return_1m": 0.08275843753468541,
+            "market_volatility": 0.1043860120890159
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7777763711709431,
+          "test_r2": -0.3989577630419161,
+          "train_rmse": 0.06461548186470017,
+          "test_rmse": 0.1410291100314399,
+          "feature_importance": {
+            "recent_1m_return": 0.03313238862210209,
+            "recent_3m_return": 0.11167407334876572,
+            "recent_1m_volatility": 0.05465987057851878,
+            "recent_3m_volatility": 0.5197161363289178,
+            "momentum_1m": 0.0025152676575441583,
+            "return_lag_1": 0.0013837628803837984,
+            "return_lag_5": 0.0013680422931554176,
+            "month": 0.09607843048039152,
+            "quarter": 0.02683525283007799,
+            "market_return_1m": 0.06434431907176605,
+            "market_volatility": 0.08829245590837674
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "MSFT": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.05708500530051264,
+          "test_r2": 0.020353650590203776,
+          "train_rmse": 0.058838574279479174,
+          "test_rmse": 0.0630448993888334
+        },
+        "ridge_regression": {
+          "train_r2": 0.05708328051249645,
+          "test_r2": 0.020025386721373994,
+          "train_rmse": 0.058838628093461326,
+          "test_rmse": 0.06305546117432606
+        },
+        "random_forest": {
+          "train_r2": 0.7085295156905551,
+          "test_r2": -0.19166890645259027,
+          "train_rmse": 0.03271320995560273,
+          "test_rmse": 0.06953334105630261,
+          "feature_importance": {
+            "recent_1m_return": 0.13336360513259227,
+            "recent_3m_return": 0.12732974327893823,
+            "recent_1m_volatility": 0.1631174419620835,
+            "recent_3m_volatility": 0.2008680685736949,
+            "momentum_1m": 0.012914355897573905,
+            "return_lag_1": 0.00966098635105213,
+            "return_lag_5": 0.009557317953941715,
+            "month": 0.13076815118227442,
+            "quarter": 0.021865602555956643,
+            "market_return_1m": 0.05493531104742281,
+            "market_volatility": 0.13561941606446964
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.682097960567015,
+          "test_r2": -0.25477741066355053,
+          "train_rmse": 0.034164299993970755,
+          "test_rmse": 0.07135076594293778,
+          "feature_importance": {
+            "recent_1m_return": 0.11166874640859573,
+            "recent_3m_return": 0.12152853309630215,
+            "recent_1m_volatility": 0.1175163478008073,
+            "recent_3m_volatility": 0.2410938469622504,
+            "momentum_1m": 0.012670453205044407,
+            "return_lag_1": 0.005663340338415319,
+            "return_lag_5": 0.00539999314746843,
+            "month": 0.14306875260347984,
+            "quarter": 0.007544742468628176,
+            "market_return_1m": 0.04078114831623175,
+            "market_volatility": 0.19306409565277652
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.06989951437650144,
+          "test_r2": -0.08727754425247403,
+          "train_rmse": 0.08988912209252,
+          "test_rmse": 0.09380147964465405
+        },
+        "ridge_regression": {
+          "train_r2": 0.06989920361174551,
+          "test_r2": -0.08717663314266844,
+          "train_rmse": 0.08988913710937527,
+          "test_rmse": 0.09379712664798805
+        },
+        "random_forest": {
+          "train_r2": 0.8407424596492329,
+          "test_r2": -0.6372830717304485,
+          "train_rmse": 0.03719565452551762,
+          "test_rmse": 0.11510690204446175,
+          "feature_importance": {
+            "recent_1m_return": 0.04587515575494779,
+            "recent_3m_return": 0.16857034663333537,
+            "recent_1m_volatility": 0.08997248425488226,
+            "recent_3m_volatility": 0.25760730236985363,
+            "momentum_1m": 0.0035816308435209342,
+            "return_lag_1": 0.004370468014005435,
+            "return_lag_5": 0.004208049205230897,
+            "month": 0.16380300558987257,
+            "quarter": 0.03445584462943278,
+            "market_return_1m": 0.0788791415411612,
+            "market_volatility": 0.14867657116375715
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7251269680371415,
+          "test_r2": -0.36498292539593247,
+          "train_rmse": 0.048866166428633964,
+          "test_rmse": 0.10510009031145118,
+          "feature_importance": {
+            "recent_1m_return": 0.052635591595794014,
+            "recent_3m_return": 0.17090724172392538,
+            "recent_1m_volatility": 0.07941244771426482,
+            "recent_3m_volatility": 0.25566193085687083,
+            "momentum_1m": 0.004105251850722954,
+            "return_lag_1": 0.0024624357485731386,
+            "return_lag_5": 0.0008418820597284361,
+            "month": 0.2084424931477165,
+            "quarter": 0.04288751734501131,
+            "market_return_1m": 0.055348535362053065,
+            "market_volatility": 0.12729467259533953
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "NVDA": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.03863090594231078,
+          "test_r2": 0.03911327851866553,
+          "train_rmse": 0.13754984030973655,
+          "test_rmse": 0.12906083946746216
+        },
+        "ridge_regression": {
+          "train_r2": 0.03862982757998279,
+          "test_r2": 0.039088008038285826,
+          "train_rmse": 0.13754991745415762,
+          "test_rmse": 0.12906253654990474
+        },
+        "random_forest": {
+          "train_r2": 0.774127273086469,
+          "test_r2": -0.13734023436246723,
+          "train_rmse": 0.06667252606793868,
+          "test_rmse": 0.1404117949405307,
+          "feature_importance": {
+            "recent_1m_return": 0.1025937437923555,
+            "recent_3m_return": 0.1418705207031769,
+            "recent_1m_volatility": 0.16611314633070948,
+            "recent_3m_volatility": 0.15280710473524622,
+            "momentum_1m": 0.00727647947456923,
+            "return_lag_1": 0.007465325384905968,
+            "return_lag_5": 0.009350860767752173,
+            "month": 0.11081693122946851,
+            "quarter": 0.022630737152610617,
+            "market_return_1m": 0.0603879999028303,
+            "market_volatility": 0.21868715052637516
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6489201743385505,
+          "test_r2": -0.2299036115144104,
+          "train_rmse": 0.0831223761125343,
+          "test_rmse": 0.14601380822521817,
+          "feature_importance": {
+            "recent_1m_return": 0.08362161115268425,
+            "recent_3m_return": 0.14986652394065292,
+            "recent_1m_volatility": 0.19856924510150728,
+            "recent_3m_volatility": 0.17335052009557336,
+            "momentum_1m": 0.0027495007269163485,
+            "return_lag_1": 0.0016850953153688937,
+            "return_lag_5": 0.002786266336640133,
+            "month": 0.113887374057599,
+            "quarter": 0.013071021955964462,
+            "market_return_1m": 0.043836147779186006,
+            "market_volatility": 0.2165766935379074
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.10092591529795614,
+          "test_r2": -0.04945632487483187,
+          "train_rmse": 0.23718682912739564,
+          "test_rmse": 0.22980121580816434
+        },
+        "ridge_regression": {
+          "train_r2": 0.10092543856967373,
+          "test_r2": -0.04945394470529951,
+          "train_rmse": 0.23718689201078677,
+          "test_rmse": 0.22980095521315458
+        },
+        "random_forest": {
+          "train_r2": 0.8888715999942348,
+          "test_r2": -0.18228269977792388,
+          "train_rmse": 0.08338834608809766,
+          "test_rmse": 0.2439106731342596,
+          "feature_importance": {
+            "recent_1m_return": 0.04414656875068896,
+            "recent_3m_return": 0.16082647004221004,
+            "recent_1m_volatility": 0.10134518550066374,
+            "recent_3m_volatility": 0.383360220008988,
+            "momentum_1m": 0.003118480080890149,
+            "return_lag_1": 0.0030885346542405745,
+            "return_lag_5": 0.004164425848664017,
+            "month": 0.11500718162862866,
+            "quarter": 0.02419927412222772,
+            "market_return_1m": 0.05051053206879963,
+            "market_volatility": 0.11023312729399862
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7768756062316583,
+          "test_r2": -0.32244817949197535,
+          "train_rmse": 0.11815887738951819,
+          "test_rmse": 0.2579642176750884,
+          "feature_importance": {
+            "recent_1m_return": 0.027953233947008008,
+            "recent_3m_return": 0.12231299609244228,
+            "recent_1m_volatility": 0.07896891238530175,
+            "recent_3m_volatility": 0.4525782508503881,
+            "momentum_1m": 0.001554143083259566,
+            "return_lag_1": 0.003453429487930574,
+            "return_lag_5": 0.001930441488581219,
+            "month": 0.10820276271777597,
+            "quarter": 0.019394815144182228,
+            "market_return_1m": 0.04660444048087553,
+            "market_volatility": 0.13704657432225467
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "JPM": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.11624249214352389,
+          "test_r2": -0.1788776342308036,
+          "train_rmse": 0.07189526279927845,
+          "test_rmse": 0.06897099258798838
+        },
+        "ridge_regression": {
+          "train_r2": 0.11623679165719114,
+          "test_r2": -0.17816842164990998,
+          "train_rmse": 0.0718954946713126,
+          "test_rmse": 0.06895024299817447
+        },
+        "random_forest": {
+          "train_r2": 0.7641452532955507,
+          "test_r2": -0.3861760032730146,
+          "train_rmse": 0.03714120826156481,
+          "test_rmse": 0.07478961543971561,
+          "feature_importance": {
+            "recent_1m_return": 0.08244446548922793,
+            "recent_3m_return": 0.12682216137571015,
+            "recent_1m_volatility": 0.06087505055299437,
+            "recent_3m_volatility": 0.2576963172309266,
+            "momentum_1m": 0.01244498843851706,
+            "return_lag_1": 0.01564476293729394,
+            "return_lag_5": 0.010785983576408231,
+            "month": 0.09748677413378226,
+            "quarter": 0.028741780637746392,
+            "market_return_1m": 0.04891576115418116,
+            "market_volatility": 0.258141954473212
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7333503341762357,
+          "test_r2": -0.6932530202742546,
+          "train_rmse": 0.03949155541870589,
+          "test_rmse": 0.08265955091397313,
+          "feature_importance": {
+            "recent_1m_return": 0.07725351950127204,
+            "recent_3m_return": 0.13646840094133408,
+            "recent_1m_volatility": 0.055257244804692796,
+            "recent_3m_volatility": 0.27308362556307314,
+            "momentum_1m": 0.005719377992300439,
+            "return_lag_1": 0.010386397362357466,
+            "return_lag_5": 0.006402177014429175,
+            "month": 0.09562209343226878,
+            "quarter": 0.041757213716429015,
+            "market_return_1m": 0.02779012357294882,
+            "market_volatility": 0.27025982609889415
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.11027000571071977,
+          "test_r2": -0.5257545292107402,
+          "train_rmse": 0.12277469338774354,
+          "test_rmse": 0.10052361293478107
+        },
+        "ridge_regression": {
+          "train_r2": 0.1102680425390079,
+          "test_r2": -0.5237045516141767,
+          "train_rmse": 0.12277482883764047,
+          "test_rmse": 0.10045605933574163
+        },
+        "random_forest": {
+          "train_r2": 0.9183399460110296,
+          "test_r2": -3.0618891722607184,
+          "train_rmse": 0.037195000918635306,
+          "test_rmse": 0.16401734974835175,
+          "feature_importance": {
+            "recent_1m_return": 0.07843207756741152,
+            "recent_3m_return": 0.07819519862953528,
+            "recent_1m_volatility": 0.11205028452446854,
+            "recent_3m_volatility": 0.3467345378469151,
+            "momentum_1m": 0.0026901140003107666,
+            "return_lag_1": 0.002681562091656878,
+            "return_lag_5": 0.004399618812765544,
+            "month": 0.21600903911631955,
+            "quarter": 0.033011265210833224,
+            "market_return_1m": 0.022838856843498328,
+            "market_volatility": 0.10295744535628541
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.8282959808937377,
+          "test_r2": -3.0833530150537856,
+          "train_rmse": 0.05393491179872701,
+          "test_rmse": 0.16445012918003035,
+          "feature_importance": {
+            "recent_1m_return": 0.03772849724501669,
+            "recent_3m_return": 0.0788089404513741,
+            "recent_1m_volatility": 0.1109178883209895,
+            "recent_3m_volatility": 0.3488903041477835,
+            "momentum_1m": 0.00021863690815225628,
+            "return_lag_1": 0.0014621124771007582,
+            "return_lag_5": 0.0007168966519016987,
+            "month": 0.25816646411329247,
+            "quarter": 0.058664505523203035,
+            "market_return_1m": 0.016038806882655715,
+            "market_volatility": 0.0883869472785303
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "JNJ": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.10037652540081787,
+          "test_r2": -0.015642806255937725,
+          "train_rmse": 0.04511560659225593,
+          "test_rmse": 0.047697193347599906
+        },
+        "ridge_regression": {
+          "train_r2": 0.10037519780808479,
+          "test_r2": -0.01511451837552702,
+          "train_rmse": 0.04511563988125463,
+          "test_rmse": 0.047684786856584754
+        },
+        "random_forest": {
+          "train_r2": 0.7389113222456307,
+          "test_r2": -0.07572386176143953,
+          "train_rmse": 0.024304709284158153,
+          "test_rmse": 0.04908770492181931,
+          "feature_importance": {
+            "recent_1m_return": 0.03376390613361151,
+            "recent_3m_return": 0.13551945309596264,
+            "recent_1m_volatility": 0.08119800328076696,
+            "recent_3m_volatility": 0.2312496131632704,
+            "momentum_1m": 0.006314939244841935,
+            "return_lag_1": 0.006702457025542752,
+            "return_lag_5": 0.007985057354498415,
+            "month": 0.11702220826681398,
+            "quarter": 0.021387621382048957,
+            "market_return_1m": 0.15208653384895815,
+            "market_volatility": 0.20677020720368433
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6688545948691011,
+          "test_r2": -0.1306207889463955,
+          "train_rmse": 0.027371952517544037,
+          "test_rmse": 0.05032465537198969,
+          "feature_importance": {
+            "recent_1m_return": 0.03718957584876592,
+            "recent_3m_return": 0.12399428822673224,
+            "recent_1m_volatility": 0.07732580710369293,
+            "recent_3m_volatility": 0.26963910375335937,
+            "momentum_1m": 0.0042260703398996746,
+            "return_lag_1": 0.002448727046248131,
+            "return_lag_5": 0.0014655433025376982,
+            "month": 0.1531259865361142,
+            "quarter": 0.015084160972612639,
+            "market_return_1m": 0.11418669806500109,
+            "market_volatility": 0.2013140388050363
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.1319957825213819,
+          "test_r2": 0.08851536619495093,
+          "train_rmse": 0.06244539762745697,
+          "test_rmse": 0.07062476445967464
+        },
+        "ridge_regression": {
+          "train_r2": 0.13199529603720817,
+          "test_r2": 0.08890940608532505,
+          "train_rmse": 0.0624454151266193,
+          "test_rmse": 0.07060949706968327
+        },
+        "random_forest": {
+          "train_r2": 0.8866167204309297,
+          "test_r2": -0.19286499715235572,
+          "train_rmse": 0.022569088784696007,
+          "test_rmse": 0.08079379055944653,
+          "feature_importance": {
+            "recent_1m_return": 0.05884117821438775,
+            "recent_3m_return": 0.16793125224322453,
+            "recent_1m_volatility": 0.169806251614051,
+            "recent_3m_volatility": 0.15801641867497856,
+            "momentum_1m": 0.005404386855368181,
+            "return_lag_1": 0.0044756048393076375,
+            "return_lag_5": 0.005011857719005652,
+            "month": 0.16580970752928073,
+            "quarter": 0.02621735258619342,
+            "market_return_1m": 0.0883141573165953,
+            "market_volatility": 0.15017183240760723
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7790185946971822,
+          "test_r2": -0.1627246585647777,
+          "train_rmse": 0.03150774944583224,
+          "test_rmse": 0.07976654438025318,
+          "feature_importance": {
+            "recent_1m_return": 0.05714627883639362,
+            "recent_3m_return": 0.14310174198689027,
+            "recent_1m_volatility": 0.1592739521014856,
+            "recent_3m_volatility": 0.17210147617538252,
+            "momentum_1m": 0.003169111816322279,
+            "return_lag_1": 0.0003206441516660227,
+            "return_lag_5": 0.0011068631579603193,
+            "month": 0.19525645693565452,
+            "quarter": 0.025810254465757118,
+            "market_return_1m": 0.07087138341395853,
+            "market_volatility": 0.1718418369585292
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "PG": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.04404805503807008,
+          "test_r2": -0.12469550528461948,
+          "train_rmse": 0.04642538209144082,
+          "test_rmse": 0.0394833270126336
+        },
+        "ridge_regression": {
+          "train_r2": 0.044047887850608425,
+          "test_r2": -0.12436623347952591,
+          "train_rmse": 0.04642538615113309,
+          "test_rmse": 0.039477546915719995
+        },
+        "random_forest": {
+          "train_r2": 0.7611114230633831,
+          "test_r2": -0.1097817983343039,
+          "train_rmse": 0.023207862774838495,
+          "test_rmse": 0.03922067464937496,
+          "feature_importance": {
+            "recent_1m_return": 0.08735966039170996,
+            "recent_3m_return": 0.13504940573642757,
+            "recent_1m_volatility": 0.08195110367823531,
+            "recent_3m_volatility": 0.26989016174484265,
+            "momentum_1m": 0.006311155560712112,
+            "return_lag_1": 0.007650156051718324,
+            "return_lag_5": 0.013058221256392343,
+            "month": 0.17356385893756596,
+            "quarter": 0.015205975604109722,
+            "market_return_1m": 0.08185565319247878,
+            "market_volatility": 0.1281046478458073
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.722859594783871,
+          "test_r2": -0.23374458382632213,
+          "train_rmse": 0.024996970634256842,
+          "test_rmse": 0.04135317798247504,
+          "feature_importance": {
+            "recent_1m_return": 0.06520710056654586,
+            "recent_3m_return": 0.11787285300263634,
+            "recent_1m_volatility": 0.0930160523623908,
+            "recent_3m_volatility": 0.29842419758545485,
+            "momentum_1m": 0.003431812755326045,
+            "return_lag_1": 0.0053279721190735265,
+            "return_lag_5": 0.0051398089750262655,
+            "month": 0.18288885008766942,
+            "quarter": 0.02306817956884635,
+            "market_return_1m": 0.0844728280176113,
+            "market_volatility": 0.1211503449594192
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.1281111883495254,
+          "test_r2": -0.24935934659691017,
+          "train_rmse": 0.07049920515550334,
+          "test_rmse": 0.04675100245505012
+        },
+        "ridge_regression": {
+          "train_r2": 0.12811022050348408,
+          "test_r2": -0.24827534855742694,
+          "train_rmse": 0.07049924428455098,
+          "test_rmse": 0.04673071646106527
+        },
+        "random_forest": {
+          "train_r2": 0.8326576571344815,
+          "test_r2": -0.6972102037770382,
+          "train_rmse": 0.030885638980657586,
+          "test_rmse": 0.05448978064664529,
+          "feature_importance": {
+            "recent_1m_return": 0.0555952812386418,
+            "recent_3m_return": 0.1352910499929834,
+            "recent_1m_volatility": 0.07224962561703503,
+            "recent_3m_volatility": 0.28203319097957913,
+            "momentum_1m": 0.0027057277142779434,
+            "return_lag_1": 0.00204526122408016,
+            "return_lag_5": 0.00382921187897767,
+            "month": 0.18587018622032547,
+            "quarter": 0.016870312294357266,
+            "market_return_1m": 0.06348057786515182,
+            "market_volatility": 0.1800295749745903
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7822273903225601,
+          "test_r2": -0.6227698491185361,
+          "train_rmse": 0.03523346016727424,
+          "test_rmse": 0.053281409800816096,
+          "feature_importance": {
+            "recent_1m_return": 0.05397034612381958,
+            "recent_3m_return": 0.11677192640551262,
+            "recent_1m_volatility": 0.10098413636379276,
+            "recent_3m_volatility": 0.3313766172621622,
+            "momentum_1m": 0.002394013278765828,
+            "return_lag_1": 0.001595083976369721,
+            "return_lag_5": 0.0014317727873353187,
+            "month": 0.1852358056948517,
+            "quarter": 0.008450786711311695,
+            "market_return_1m": 0.04797549292728207,
+            "market_volatility": 0.14981401846879638
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "SPY": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.07646360204023817,
+          "test_r2": 0.002480561211593124,
+          "train_rmse": 0.04738347298480008,
+          "test_rmse": 0.04016376263072889
+        },
+        "ridge_regression": {
+          "train_r2": 0.07646319439504867,
+          "test_r2": 0.002526851293235044,
+          "train_rmse": 0.04738348344223453,
+          "test_rmse": 0.04016283071634789
+        },
+        "random_forest": {
+          "train_r2": 0.7064452060114454,
+          "test_r2": -0.7193509814288364,
+          "train_rmse": 0.026714341271050736,
+          "test_rmse": 0.052729782306001144,
+          "feature_importance": {
+            "recent_1m_return": 0.03235320594918477,
+            "recent_3m_return": 0.29111916714775143,
+            "recent_1m_volatility": 0.10416875594810975,
+            "recent_3m_volatility": 0.29540767021292413,
+            "momentum_1m": 0.022737004902263866,
+            "return_lag_1": 0.020609146534914188,
+            "return_lag_5": 0.0139367477009481,
+            "month": 0.07751329025078625,
+            "quarter": 0.00987620467618618,
+            "market_return_1m": 0.02925279883418643,
+            "market_volatility": 0.10302600784274477
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6755775941064159,
+          "test_r2": -0.13915677013163363,
+          "train_rmse": 0.028083763136834985,
+          "test_rmse": 0.042920567508349605,
+          "feature_importance": {
+            "recent_1m_return": 0.023666859760877384,
+            "recent_3m_return": 0.2395220252531261,
+            "recent_1m_volatility": 0.13325011161397965,
+            "recent_3m_volatility": 0.2668155381038186,
+            "momentum_1m": 0.01376075207962532,
+            "return_lag_1": 0.01654825484695323,
+            "return_lag_5": 0.0030027892513021597,
+            "month": 0.07767346351975787,
+            "quarter": 0.04947382606461981,
+            "market_return_1m": 0.04259343963488142,
+            "market_volatility": 0.13369293987105854
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.15333264915728395,
+          "test_r2": -0.09440421080165584,
+          "train_rmse": 0.0655511546867825,
+          "test_rmse": 0.06311851771275345
+        },
+        "ridge_regression": {
+          "train_r2": 0.15333127371451638,
+          "test_r2": -0.09379603612426446,
+          "train_rmse": 0.06555120793191173,
+          "test_rmse": 0.06310097738427999
+        },
+        "random_forest": {
+          "train_r2": 0.7936586134300422,
+          "test_r2": 0.039223973676951185,
+          "train_rmse": 0.03236064074245348,
+          "test_rmse": 0.059139683028662585,
+          "feature_importance": {
+            "recent_1m_return": 0.030785066611178444,
+            "recent_3m_return": 0.1962401781052953,
+            "recent_1m_volatility": 0.08680331056644837,
+            "recent_3m_volatility": 0.3694033841318351,
+            "momentum_1m": 0.008104728681111412,
+            "return_lag_1": 0.008596679249858397,
+            "return_lag_5": 0.013308257547352731,
+            "month": 0.1292427446243081,
+            "quarter": 0.021459048421256025,
+            "market_return_1m": 0.04260661712090454,
+            "market_volatility": 0.0934499849404515
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6522720498445098,
+          "test_r2": 0.0927800368708801,
+          "train_rmse": 0.042009135078843386,
+          "test_rmse": 0.057467752498627234,
+          "feature_importance": {
+            "recent_1m_return": 0.01956918189250142,
+            "recent_3m_return": 0.21809187064041155,
+            "recent_1m_volatility": 0.08616651464678808,
+            "recent_3m_volatility": 0.4282320088837619,
+            "momentum_1m": 0.0008716198149902727,
+            "return_lag_1": 0.001165428090264513,
+            "return_lag_5": 0.005683139589487111,
+            "month": 0.11826470137635137,
+            "quarter": 0.014400413619399935,
+            "market_return_1m": 0.026089295290021165,
+            "market_volatility": 0.08146582615602263
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "QQQ": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.10589092155143087,
+          "test_r2": 0.11193758500724205,
+          "train_rmse": 0.05554450412961407,
+          "test_rmse": 0.04910481401603814
+        },
+        "ridge_regression": {
+          "train_r2": 0.105875644685415,
+          "test_r2": 0.11088848223969228,
+          "train_rmse": 0.05554497864796055,
+          "test_rmse": 0.04913381017099919
+        },
+        "random_forest": {
+          "train_r2": 0.7463024878135123,
+          "test_r2": -0.04429294008423024,
+          "train_rmse": 0.02958720534838328,
+          "test_rmse": 0.05324925015032705,
+          "feature_importance": {
+            "recent_1m_return": 0.04549824820005521,
+            "recent_3m_return": 0.11248267954827755,
+            "recent_1m_volatility": 0.09054348634078335,
+            "recent_3m_volatility": 0.33229445196938384,
+            "momentum_1m": 0.008910041517664993,
+            "return_lag_1": 0.009167939131145122,
+            "return_lag_5": 0.009819451982402267,
+            "month": 0.16055263830580147,
+            "quarter": 0.01436717328322442,
+            "market_return_1m": 0.05480460639825363,
+            "market_volatility": 0.16155928332300815
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6837235504306464,
+          "test_r2": 0.08476897555456786,
+          "train_rmse": 0.03303537713674885,
+          "test_rmse": 0.049850290349734885,
+          "feature_importance": {
+            "recent_1m_return": 0.03338165621801536,
+            "recent_3m_return": 0.13599264536571773,
+            "recent_1m_volatility": 0.147761587837045,
+            "recent_3m_volatility": 0.3012385955726449,
+            "momentum_1m": 0.0024082818752288386,
+            "return_lag_1": 0.003790851079516787,
+            "return_lag_5": 0.0006103104065579719,
+            "month": 0.17507475799960473,
+            "quarter": 0.011293097523171949,
+            "market_return_1m": 0.06212089596969818,
+            "market_volatility": 0.12632732015279863
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.1859425926391578,
+          "test_r2": -0.04525641790175294,
+          "train_rmse": 0.08220198486455135,
+          "test_rmse": 0.07491101686631019
+        },
+        "ridge_regression": {
+          "train_r2": 0.18592649558065932,
+          "test_r2": -0.04600416208730573,
+          "train_rmse": 0.08220279758586924,
+          "test_rmse": 0.07493780659091588
+        },
+        "random_forest": {
+          "train_r2": 0.796387286405014,
+          "test_r2": -0.06034601557562991,
+          "train_rmse": 0.04111092361731671,
+          "test_rmse": 0.07544979695177965,
+          "feature_importance": {
+            "recent_1m_return": 0.047359731189871905,
+            "recent_3m_return": 0.1252565573293619,
+            "recent_1m_volatility": 0.07971120070712628,
+            "recent_3m_volatility": 0.41257354688269715,
+            "momentum_1m": 0.004000174082125256,
+            "return_lag_1": 0.0033803752553852153,
+            "return_lag_5": 0.004994548933664287,
+            "month": 0.12882780822021983,
+            "quarter": 0.027440567725991034,
+            "market_return_1m": 0.042920161525543093,
+            "market_volatility": 0.123535328148014
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7140953959174303,
+          "test_r2": 0.10701856361946227,
+          "train_rmse": 0.04871529788872757,
+          "test_rmse": 0.06923974923339445,
+          "feature_importance": {
+            "recent_1m_return": 0.03782704334981783,
+            "recent_3m_return": 0.14952282990375743,
+            "recent_1m_volatility": 0.06366080475525016,
+            "recent_3m_volatility": 0.41523195197093343,
+            "momentum_1m": 0.004262749549081982,
+            "return_lag_1": 0.0033433662376549074,
+            "return_lag_5": 0.001477254252338532,
+            "month": 0.13721627975237127,
+            "quarter": 0.02701885463842262,
+            "market_return_1m": 0.02152271175464355,
+            "market_volatility": 0.13891615383572833
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "TLT": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.03531163608182053,
+          "test_r2": -0.09155172673273859,
+          "train_rmse": 0.03820756554690892,
+          "test_rmse": 0.04607913536280064
+        },
+        "ridge_regression": {
+          "train_r2": 0.03531124729430324,
+          "test_r2": -0.09105839376155367,
+          "train_rmse": 0.03820757324609117,
+          "test_rmse": 0.046068721323187935
+        },
+        "random_forest": {
+          "train_r2": 0.8262667857338322,
+          "test_r2": -0.14851917602836062,
+          "train_rmse": 0.016214265277861833,
+          "test_rmse": 0.04726626506981929,
+          "feature_importance": {
+            "recent_1m_return": 0.07607221294471929,
+            "recent_3m_return": 0.19030583192213588,
+            "recent_1m_volatility": 0.11772737993181295,
+            "recent_3m_volatility": 0.17440866389499615,
+            "momentum_1m": 0.007367236612525053,
+            "return_lag_1": 0.0068208244178829345,
+            "return_lag_5": 0.008994262066954561,
+            "month": 0.1386771108276629,
+            "quarter": 0.012018820009165924,
+            "market_return_1m": 0.08615180569573608,
+            "market_volatility": 0.18145585167640824
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7048017885407803,
+          "test_r2": 0.0707231283417723,
+          "train_rmse": 0.021135508827322506,
+          "test_rmse": 0.042516227767142666,
+          "feature_importance": {
+            "recent_1m_return": 0.06259574374747075,
+            "recent_3m_return": 0.16200683432467408,
+            "recent_1m_volatility": 0.10914386764007336,
+            "recent_3m_volatility": 0.20373267669985765,
+            "momentum_1m": 0.0019822378848460306,
+            "return_lag_1": 0.0038098306600546283,
+            "return_lag_5": 0.00819502004303178,
+            "month": 0.1829056925103395,
+            "quarter": 0.01577519909089795,
+            "market_return_1m": 0.09079040708021155,
+            "market_volatility": 0.1590624903185429
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.06331302633836677,
+          "test_r2": -0.21330826267648706,
+          "train_rmse": 0.07047519595490292,
+          "test_rmse": 0.07737632586466882
+        },
+        "ridge_regression": {
+          "train_r2": 0.0633127278266965,
+          "test_r2": -0.21285019945680617,
+          "train_rmse": 0.07047520718473069,
+          "test_rmse": 0.07736171844958781
+        },
+        "random_forest": {
+          "train_r2": 0.9293055578725737,
+          "test_r2": 0.009419289288237098,
+          "train_rmse": 0.019361173982772338,
+          "test_rmse": 0.0699145327730823,
+          "feature_importance": {
+            "recent_1m_return": 0.07302193905590765,
+            "recent_3m_return": 0.10109715452461669,
+            "recent_1m_volatility": 0.1094596912732753,
+            "recent_3m_volatility": 0.2692952343472476,
+            "momentum_1m": 0.0026203795850846517,
+            "return_lag_1": 0.0021348405209083727,
+            "return_lag_5": 0.0027916321830734597,
+            "month": 0.17634940128297405,
+            "quarter": 0.08982151510492764,
+            "market_return_1m": 0.050172742726487536,
+            "market_volatility": 0.12323546939549704
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.8381288375446088,
+          "test_r2": -0.02685995464816271,
+          "train_rmse": 0.02929704340950201,
+          "test_rmse": 0.07118330285226397,
+          "feature_importance": {
+            "recent_1m_return": 0.06490870344394559,
+            "recent_3m_return": 0.08395510415651597,
+            "recent_1m_volatility": 0.15004366043214817,
+            "recent_3m_volatility": 0.27756754088863494,
+            "momentum_1m": 0.0010084916949573682,
+            "return_lag_1": 0.0007819036222734199,
+            "return_lag_5": 0.0009863016037062126,
+            "month": 0.21072529331245216,
+            "quarter": 0.07674649143722859,
+            "market_return_1m": 0.03624996612755837,
+            "market_volatility": 0.0970265432805792
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  },
+  "GLD": {
+    "1M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.05458129434890746,
+          "test_r2": -0.23698316282429244,
+          "train_rmse": 0.03780331588259428,
+          "test_rmse": 0.04074949856389419
+        },
+        "ridge_regression": {
+          "train_r2": 0.054581215114289705,
+          "test_r2": -0.23703654996988277,
+          "train_rmse": 0.037803317466723725,
+          "test_rmse": 0.040750377911328045
+        },
+        "random_forest": {
+          "train_r2": 0.6853990023478505,
+          "test_r2": -0.4273381237804601,
+          "train_rmse": 0.0218070966096538,
+          "test_rmse": 0.043772747576219025,
+          "feature_importance": {
+            "recent_1m_return": 0.05070784505367429,
+            "recent_3m_return": 0.13704203408965326,
+            "recent_1m_volatility": 0.12489500866342307,
+            "recent_3m_volatility": 0.13925381453236874,
+            "momentum_1m": 0.0038991145998366907,
+            "return_lag_1": 0.006190512161223994,
+            "return_lag_5": 0.005687020441382852,
+            "month": 0.20702485330341205,
+            "quarter": 0.019495412802589013,
+            "market_return_1m": 0.12263987099052985,
+            "market_volatility": 0.18316451336190612
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.6608682906038779,
+          "test_r2": -0.3452482343271601,
+          "train_rmse": 0.022641333371111454,
+          "test_rmse": 0.04249536757915522,
+          "feature_importance": {
+            "recent_1m_return": 0.0372107106094676,
+            "recent_3m_return": 0.11704848614408299,
+            "recent_1m_volatility": 0.10163447420971776,
+            "recent_3m_volatility": 0.16943676504442545,
+            "momentum_1m": 0.0037905547992963004,
+            "return_lag_1": 0.0022955562855370318,
+            "return_lag_5": 0.006427981695716452,
+            "month": 0.20903474120889975,
+            "quarter": 0.018676561272603056,
+            "market_return_1m": 0.1256363380437926,
+            "market_volatility": 0.20880783068646103
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2390
+    },
+    "3M": {
+      "performance": {
+        "linear_regression": {
+          "train_r2": 0.037235034391323696,
+          "test_r2": -0.9429325009273724,
+          "train_rmse": 0.06414158232731706,
+          "test_rmse": 0.08338620147459458
+        },
+        "ridge_regression": {
+          "train_r2": 0.03723498158713512,
+          "test_r2": -0.9426880263311936,
+          "train_rmse": 0.06414158408628436,
+          "test_rmse": 0.08338095516541054
+        },
+        "random_forest": {
+          "train_r2": 0.8309695935616085,
+          "test_r2": -1.0163192298701396,
+          "train_rmse": 0.026875833891725636,
+          "test_rmse": 0.08494640035712882,
+          "feature_importance": {
+            "recent_1m_return": 0.050237334966054606,
+            "recent_3m_return": 0.08200890776929741,
+            "recent_1m_volatility": 0.11942025278441723,
+            "recent_3m_volatility": 0.3045657597364704,
+            "momentum_1m": 0.0020517074463058584,
+            "return_lag_1": 0.001374286739027372,
+            "return_lag_5": 0.0028665475953077203,
+            "month": 0.15544461914871094,
+            "quarter": 0.04213622055155462,
+            "market_return_1m": 0.06887045192646675,
+            "market_volatility": 0.17102391133638706
+          }
+        },
+        "gradient_boosting": {
+          "train_r2": 0.7202992362740068,
+          "test_r2": -0.8760036217907587,
+          "train_rmse": 0.03457214744021588,
+          "test_rmse": 0.08193739837350551,
+          "feature_importance": {
+            "recent_1m_return": 0.031970435325720116,
+            "recent_3m_return": 0.07883524630820976,
+            "recent_1m_volatility": 0.13439801722192826,
+            "recent_3m_volatility": 0.3313490236766609,
+            "momentum_1m": 0.0028742534912459296,
+            "return_lag_1": 0.0018238851540498262,
+            "return_lag_5": 0.0022021888736025916,
+            "month": 0.16020003170018413,
+            "quarter": 0.03310550918180247,
+            "market_return_1m": 0.07128241649978798,
+            "market_volatility": 0.15195899256680803
+          }
+        }
+      },
+      "features": [
+        "recent_1m_return",
+        "recent_3m_return",
+        "recent_1m_volatility",
+        "recent_3m_volatility",
+        "momentum_1m",
+        "return_lag_1",
+        "return_lag_5",
+        "month",
+        "quarter",
+        "market_return_1m",
+        "market_volatility"
+      ],
+      "data_samples": 2348
+    }
+  }
+}

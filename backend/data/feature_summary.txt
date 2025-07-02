@@ -1,0 +1,31 @@
+PORTFOLIO ASSET FEATURES SUMMARY
+==================================================
+
+Generated on: 2025-07-02 02:01:54
+Feature Matrix Shape: (45, 129)
+Assets: 45
+Features: 129
+
+FEATURE GROUPS:
+--------------------
+basic_risk_return: 23 features
+distribution: 6 features
+momentum: 18 features
+rolling_stats: 28 features
+correlation: 10 features
+sector_dummies: 26 features
+advanced: 7 features
+
+FEATURE STATISTICS:
+--------------------
+       mean_daily_return  mean_annual_return  ...  upside_potential  downside_deviation
+count          45.000000           45.000000  ...         45.000000           45.000000
+mean            0.000662            0.166852  ...          0.012113            0.016538
+std             0.000442            0.111310  ...          0.004316            0.005118
+min             0.000025            0.006236  ...          0.006904            0.009130
+25%             0.000433            0.109175  ...          0.008883            0.012788
+50%             0.000589            0.148421  ...          0.011580            0.016025
+75%             0.000772            0.194433  ...          0.013658            0.018360
+max             0.002717            0.684769  ...          0.028583            0.035487
+
+[8 rows x 129 columns]

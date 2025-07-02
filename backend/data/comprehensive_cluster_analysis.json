@@ -1,0 +1,221 @@
+{
+  "cluster_composition_analysis": {
+    "Cluster_0": {
+      "assets": [
+        "LIN",
+        "NEM",
+        "GLD"
+      ],
+      "size": 3,
+      "sectors": {
+        "Materials": 2,
+        "ETF_Commodity": 1
+      },
+      "style_distribution": {
+        "growth": 0,
+        "value": 0,
+        "defensive": 0
+      },
+      "theme": "Materials-Dominated",
+      "performance_summary": {
+        "mean_annual_return": 0.15715163701337567,
+        "annual_volatility": 0.24274340850872175,
+        "sharpe_ratio": 0.6914518144982974,
+        "recent_3month_return": 0.10351645257684201,
+        "market_correlation": 0.2926528812217345
+      }
+    },
+    "Cluster_1": {
+      "assets": [
+        "JNJ",
+        "PFE",
+        "UNH",
+        "ABBV",
+        "V",
+        "HD",
+        "MCD",
+        "SBUX",
+        "PG",
+        "KO",
+        "PEP",
+        "WMT",
+        "XOM",
+        "CVX",
+        "COP",
+        "VZ",
+        "T",
+        "NEE",
+        "AMT",
+        "TLT",
+        "VNQ"
+      ],
+      "size": 21,
+      "sectors": {
+        "Healthcare": 4,
+        "Financial": 1,
+        "Consumer": 7,
+        "Energy": 3,
+        "Communication": 2,
+        "Utilities": 1,
+        "REIT": 1,
+        "ETF_Bonds": 1,
+        "ETF_REIT": 1
+      },
+      "style_distribution": {
+        "growth": 0,
+        "value": 4,
+        "defensive": 8
+      },
+      "theme": "Low-Momentum/Low-Risk",
+      "performance_summary": {
+        "mean_annual_return": 0.1236648010709665,
+        "annual_volatility": 0.22779517239955863,
+        "sharpe_ratio": 0.5419980924656094,
+        "recent_3month_return": -0.031235573878554034,
+        "market_correlation": 0.46081309935675874
+      }
+    },
+    "Cluster_2": {
+      "assets": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "VTI",
+        "EFA",
+        "EEM"
+      ],
+      "size": 6,
+      "sectors": {
+        "ETF_Broad": 2,
+        "ETF_Tech": 1,
+        "ETF_Small": 1,
+        "ETF_International": 1,
+        "ETF_Emerging": 1
+      },
+      "style_distribution": {
+        "growth": 0,
+        "value": 0,
+        "defensive": 0
+      },
+      "theme": "ETF/Diversified",
+      "performance_summary": {
+        "mean_annual_return": 0.12521653716191053,
+        "annual_volatility": 0.1936038954514239,
+        "sharpe_ratio": 0.6507452897074641,
+        "recent_3month_return": 0.08999339141837163,
+        "market_correlation": 0.8742080754398018
+      }
+    },
+    "Cluster_3": {
+      "assets": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "NVDA",
+        "META",
+        "TSLA",
+        "JPM",
+        "BAC",
+        "WFC",
+        "GS",
+        "AMZN",
+        "BA",
+        "CAT",
+        "GE",
+        "DIS"
+      ],
+      "size": 15,
+      "sectors": {
+        "Technology": 6,
+        "Financial": 4,
+        "Consumer": 1,
+        "Industrial": 3,
+        "Communication": 1
+      },
+      "style_distribution": {
+        "growth": 7,
+        "value": 4,
+        "defensive": 0
+      },
+      "theme": "High-Momentum/High-Risk",
+      "performance_summary": {
+        "mean_annual_return": 0.2459087620801118,
+        "annual_volatility": 0.33809765710065093,
+        "sharpe_ratio": 0.7061475331443601,
+        "recent_3month_return": 0.19670545760354805,
+        "market_correlation": 0.6514916047173461
+      }
+    }
+  },
+  "portfolio_construction_guidelines": {
+    "diversification_strategy": {
+      "rules": [
+        "Never allocate >40% to any single cluster",
+        "Ensure representation from at least 3 different clusters",
+        "Limit sector concentration to <30% of total portfolio",
+        "Balance growth and defensive allocations (60/40 to 40/60 range)",
+        "Include at least one ETF for broad market exposure",
+        "Monitor cluster performance and rebalance quarterly"
+      ]
+    },
+    "cluster_allocation_framework": {
+      "Cluster_0": {
+        "target_weight": "5-15%",
+        "role": "Tactical Allocation",
+        "rationale": "Specialized exposure and diversification",
+        "risk_level": "Variable",
+        "selection_criteria": "Pick 1-2 representative assets"
+      },
+      "Cluster_1": {
+        "target_weight": "20-30%",
+        "role": "Stability Core",
+        "rationale": "Defensive assets for downside protection",
+        "risk_level": "Low",
+        "selection_criteria": "Pick assets with lowest volatility and max drawdown"
+      },
+      "Cluster_2": {
+        "target_weight": "25-35%",
+        "role": "Core Holdings",
+        "rationale": "Broad market exposure and diversification",
+        "risk_level": "Moderate",
+        "selection_criteria": "Pick broad market ETFs (SPY, VTI) and sector ETFs"
+      },
+      "Cluster_3": {
+        "target_weight": "15-25%",
+        "role": "Growth Engine",
+        "rationale": "High-performing assets for portfolio growth",
+        "risk_level": "High",
+        "selection_criteria": "Pick top 3-5 assets by Sharpe ratio"
+      }
+    },
+    "asset_selection_rules": {
+      "within_cluster_selection": [
+        "Rank assets by Sharpe ratio within each cluster",
+        "Consider correlation - avoid highly correlated assets (>0.8)",
+        "Prefer liquid assets (large cap stocks and major ETFs)",
+        "Check recent momentum - recent 3M performance indicator"
+      ],
+      "cross_cluster_balance": [
+        "Ensure no cluster dominates portfolio (max 35%)",
+        "Balance high-volatility and low-volatility clusters",
+        "Include both momentum and defensive characteristics",
+        "Consider sector exposure across all selections"
+      ]
+    },
+    "risk_management_guidelines": [
+      "Monitor cluster performance shifts monthly",
+      "Rebalance if any cluster deviates >5% from target",
+      "Set stop-losses for high-momentum cluster assets",
+      "Increase defensive allocation during market stress",
+      "Use cluster correlation for portfolio VaR calculation"
+    ]
+  },
+  "summary_statistics": {
+    "total_assets": 45,
+    "num_clusters": 4,
+    "sectors_represented": 18,
+    "growth_stocks_count": 7,
+    "value_stocks_count": 8,
+    "defensive_stocks_count": 8
+  }
+}

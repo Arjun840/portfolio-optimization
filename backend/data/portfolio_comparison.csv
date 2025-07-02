@@ -1,0 +1,4 @@
+Strategy,Risk_Profile,Target_Return,Weighted_Sharpe,Weighted_Volatility,Expected_Return,Num_Assets,Num_Clusters,Num_Sectors,Cluster_0_Weight,Cluster_1_Weight,Cluster_2_Weight,Cluster_3_Weight
+Conservative,Low,8-12% annually,0.646,21.3%,13.8%,18,4,13,10.0%,45.0%,35.0%,10.0%
+Balanced,Moderate,12-16% annually,0.714,23.2%,16.6%,18,4,13,10.0%,30.0%,35.0%,25.0%
+Growth,High,16-25% annually,0.774,25.5%,19.7%,18,4,13,15.0%,20.0%,25.0%,40.0%

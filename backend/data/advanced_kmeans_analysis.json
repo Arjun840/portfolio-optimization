@@ -1,0 +1,229 @@
+{
+  "elbow_analysis": {
+    "k_values": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "optimal_k_elbow": 8,
+    "optimal_k_silhouette": 2,
+    "optimal_k_calinski": 2,
+    "best_silhouette_score": 0.2352419102560509,
+    "best_calinski_score": 15.550443403688027
+  },
+  "final_clustering": {
+    "optimal_k": 2,
+    "silhouette_score": 0.2352419102560509,
+    "calinski_harabasz_score": 15.550443403688027,
+    "inertia": 958.4043559346534
+  },
+  "cluster_profiles": {
+    "Cluster_0": {
+      "assets": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "NVDA",
+        "META",
+        "TSLA",
+        "JPM",
+        "BAC",
+        "WFC",
+        "GS",
+        "AMZN",
+        "BA",
+        "CAT",
+        "GE",
+        "DIS",
+        "SPY",
+        "QQQ",
+        "IWM",
+        "VTI",
+        "EFA",
+        "EEM"
+      ],
+      "size": 21,
+      "characteristics": {
+        "risk_level": "Moderate Risk",
+        "performance": "Moderate Performance",
+        "momentum": "Strong Momentum",
+        "market_exposure": "High Market Beta",
+        "dominant_sector": "correlation"
+      },
+      "metrics": {
+        "mean_annual_return": {
+          "mean": 0.2114252692463401,
+          "std": 0.14268570384673931,
+          "min": 0.04134130798862761,
+          "max": 0.6847694282698318,
+          "median": 0.17864992622995238
+        },
+        "annual_volatility": {
+          "mean": 0.29681372520087174,
+          "std": 0.10158174503465865,
+          "min": 0.16570899164117148,
+          "max": 0.5884721662525125,
+          "median": 0.2876700486645241
+        },
+        "sharpe_ratio": {
+          "mean": 0.6903183207338184,
+          "std": 0.2848012653779984,
+          "min": 0.15081651963863127,
+          "max": 1.4064218766000922,
+          "median": 0.7700580356456446
+        },
+        "max_drawdown": {
+          "mean": -0.4868572612797886,
+          "std": 0.16365598460183128,
+          "min": -0.8042966462522894,
+          "max": -0.27043511591798786,
+          "median": -0.44304775817611997
+        },
+        "recent_3month_return": {
+          "mean": 0.1662162958363548,
+          "std": 0.10754577158144027,
+          "min": -0.10522614810019537,
+          "max": 0.4084717699694247,
+          "median": 0.16749731606236518
+        },
+        "market_correlation": {
+          "mean": 0.7151248820666192,
+          "std": 0.13466556345723613,
+          "min": 0.5164637199770258,
+          "max": 0.9641863037971588,
+          "median": 0.6920569584645108
+        },
+        "safe_haven_score": {
+          "mean": -0.4489120822038942,
+          "std": 0.09228449649255177,
+          "min": -0.6360699806899395,
+          "max": -0.3230690515227194,
+          "median": -0.42953429009905647
+        }
+      }
+    },
+    "Cluster_1": {
+      "assets": [
+        "JNJ",
+        "PFE",
+        "UNH",
+        "ABBV",
+        "V",
+        "HD",
+        "MCD",
+        "SBUX",
+        "PG",
+        "KO",
+        "PEP",
+        "WMT",
+        "XOM",
+        "CVX",
+        "COP",
+        "VZ",
+        "T",
+        "NEE",
+        "AMT",
+        "LIN",
+        "NEM",
+        "TLT",
+        "GLD",
+        "VNQ"
+      ],
+      "size": 24,
+      "characteristics": {
+        "risk_level": "Moderate Risk",
+        "performance": "Moderate Performance",
+        "momentum": "Negative Momentum",
+        "market_exposure": "Moderate Market Beta",
+        "dominant_sector": "correlation"
+      },
+      "metrics": {
+        "mean_annual_return": {
+          "mean": 0.12785065556376765,
+          "std": 0.05096769809081398,
+          "min": 0.0062359553160660705,
+          "max": 0.19485872436409987,
+          "median": 0.12823780030952933
+        },
+        "annual_volatility": {
+          "mean": 0.22966370191320398,
+          "std": 0.057290761526145755,
+          "min": 0.1441232012338689,
+          "max": 0.3733898932131834,
+          "median": 0.22982177754164557
+        },
+        "sharpe_ratio": {
+          "mean": 0.5606798077196955,
+          "std": 0.2171048359566647,
+          "min": 0.04199481991821635,
+          "max": 0.8826066561003699,
+          "median": 0.5321324538697253
+        },
+        "max_drawdown": {
+          "mean": -0.38879627131394345,
+          "std": 0.1219091714911455,
+          "min": -0.6275027846812441,
+          "max": -0.21294263552076775,
+          "median": -0.36339620013571466
+        },
+        "recent_3month_return": {
+          "mean": -0.014391570571629528,
+          "std": 0.08561632092547185,
+          "min": -0.19009821483623301,
+          "max": 0.21740326462365744,
+          "median": -0.015147891371986466
+        },
+        "market_correlation": {
+          "mean": 0.43979307208988083,
+          "std": 0.1942838532186497,
+          "min": -0.14625785515730688,
+          "max": 0.732234812441675,
+          "median": 0.45438142463322606
+        },
+        "safe_haven_score": {
+          "mean": -0.2253687758666549,
+          "std": 0.11697317469846827,
+          "min": -0.4388021564720861,
+          "max": 0.0753908414322956,
+          "median": -0.21691399730823277
+        }
+      }
+    }
+  },
+  "diversification_strategy": {
+    "Cluster_0": {
+      "allocation": "Momentum Holdings (10-15%)",
+      "rationale": "Capitalize on recent performance trends",
+      "assets": [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "NVDA",
+        "META"
+      ],
+      "total_assets": 21
+    },
+    "Cluster_1": {
+      "allocation": "Diversifier (5-15%)",
+      "rationale": "Additional diversification benefits",
+      "assets": [
+        "JNJ",
+        "PFE",
+        "UNH",
+        "ABBV",
+        "V"
+      ],
+      "total_assets": 24
+    }
+  }
+}
