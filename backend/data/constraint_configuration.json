@@ -1,0 +1,13 @@
+{
+  "max_weight_per_asset": 0.2,
+  "max_weight_per_cluster": 0.4,
+  "min_assets": 5,
+  "sector_limits": {
+    "Technology": 0.3,
+    "Financial": 0.25,
+    "Healthcare": 0.2,
+    "Consumer": 0.25,
+    "ETF_Broad": 0.3,
+    "ETF_Tech": 0.15
+  }
+}

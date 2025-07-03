@@ -1,0 +1,422 @@
+{
+  "historical": {
+    "basic": {
+      "return": 0.2640656523585555,
+      "volatility": 0.1512741536058109,
+      "sharpe": 1.6133995566390016,
+      "max_weight": 0.3851268729380918,
+      "active_assets": 7,
+      "constraint_analysis": {
+        "max_asset_weight": 0.3851268729380918,
+        "max_weight_constraint_satisfied": false,
+        "active_assets": 7,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.2568592618387126,
+          "1": 0.35801386522319867,
+          "0": 0.38512687293809195,
+          "2": 8.803458962982926e-16
+        },
+        "max_cluster_weight": 0.38512687293809195,
+        "max_cluster_constraint_satisfied": true,
+        "sector_weights": {
+          "Technology": 0.22544722405314638,
+          "Healthcare": 0.11778538331243099,
+          "Financial": 0.03141203778556496,
+          "Consumer": 0.24022848191076712,
+          "Energy": 0.0,
+          "Industrial": 9.179803483086364e-16,
+          "Communication": 0.0,
+          "Utilities": 8.983205899095899e-17,
+          "REIT": 0.0,
+          "Materials": 1.851751370512145e-16,
+          "ETF_Broad": 7.11153325825434e-16,
+          "ETF_Tech": 0.0,
+          "ETF_Small": 0.0,
+          "ETF_International": 3.7177370818836806e-17,
+          "ETF_Emerging": 1.3201519965402183e-16,
+          "ETF_Bonds": 1.6136460038340413e-16,
+          "ETF_Commodity": 0.3851268729380918,
+          "ETF_REIT": 6.112591662902576e-16
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.3851268729380918,
+        "NVDA": 0.2124062602344076,
+        "WMT": 0.1511303066335287
+      }
+    },
+    "enhanced": {
+      "return": 0.2606554993790226,
+      "volatility": 0.1526590982808104,
+      "sharpe": 1.5764242163696416,
+      "max_weight": 0.2,
+      "active_assets": 12,
+      "constraint_analysis": {
+        "max_asset_weight": 0.2,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 12,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.2646084920617656,
+          "1": 0.5238886500831134,
+          "0": 0.21150285785512457,
+          "2": 3.860749174506249e-16
+        },
+        "max_cluster_weight": 0.5238886500831134,
+        "max_cluster_constraint_satisfied": false,
+        "sector_weights": {
+          "Technology": 0.21966518687067757,
+          "Healthcare": 0.13750163039700447,
+          "Financial": 0.02974442354810653,
+          "Consumer": 0.3036424169156888,
+          "Energy": 3.1113902098632674e-16,
+          "Industrial": 0.015198881642981554,
+          "Communication": 5.006162092631221e-16,
+          "Utilities": 0.017810441332392426,
+          "REIT": 4.930591622717261e-17,
+          "Materials": 0.011502857855124546,
+          "ETF_Broad": 0.0,
+          "ETF_Tech": 1.771417185082215e-16,
+          "ETF_Small": 0.0,
+          "ETF_International": 0.0,
+          "ETF_Emerging": 2.0893319894240339e-16,
+          "ETF_Bonds": 0.06493416143802691,
+          "ETF_Commodity": 0.2,
+          "ETF_REIT": 5.480810879181921e-17
+        }
+      },
+      "top_3_assets": {
+        "NVDA": 0.2,
+        "GLD": 0.2,
+        "WMT": 0.18721559982377753
+      }
+    },
+    "strict": {
+      "return": 0.23070198745938547,
+      "volatility": 0.13949332571080514,
+      "sharpe": 1.5104807802504383,
+      "max_weight": 0.1999999999999994,
+      "active_assets": 12,
+      "constraint_analysis": {
+        "max_asset_weight": 0.1999999999999994,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 12,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.33313234225398497,
+          "1": 0.4000000000000024,
+          "0": 0.26686765774601773,
+          "2": 1.5007144608771384e-16
+        },
+        "max_cluster_weight": 0.4000000000000024,
+        "max_cluster_constraint_satisfied": true,
+        "sector_weights": {
+          "Technology": 0.15000000000000263,
+          "Healthcare": 0.1313602819677465,
+          "Financial": 0.11488362223788143,
+          "Consumer": 0.15000000000000172,
+          "Energy": 3.24706624002246e-16,
+          "Industrial": 0.0465327570642878,
+          "Communication": 4.963167154326056e-16,
+          "Utilities": 0.028506275491541583,
+          "REIT": 0.0,
+          "Materials": 0.06686765774601836,
+          "ETF_Broad": 1.5007144608771384e-16,
+          "ETF_Tech": 0.0,
+          "ETF_Small": 0.0,
+          "ETF_International": 0.0,
+          "ETF_Emerging": 0.0,
+          "ETF_Bonds": 0.11184940549252455,
+          "ETF_Commodity": 0.1999999999999994,
+          "ETF_REIT": 4.727437217563314e-16
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.1999999999999994,
+        "NVDA": 0.14999999999999933,
+        "WMT": 0.12185660761303888
+      }
+    }
+  },
+  "ml_enhanced": {
+    "basic": {
+      "return": 0.3933251749692494,
+      "volatility": 0.13671050105380983,
+      "sharpe": 2.730771755582309,
+      "max_weight": 0.39509656448598085,
+      "active_assets": 7,
+      "constraint_analysis": {
+        "max_asset_weight": 0.39509656448598085,
+        "max_weight_constraint_satisfied": false,
+        "active_assets": 7,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "0": 0.4002495445153652,
+          "1": 0.12467267764347756,
+          "2": 5.315493071506697e-15,
+          "3": 0.47507777784119354
+        },
+        "max_cluster_weight": 0.47507777784119354,
+        "max_cluster_constraint_satisfied": false,
+        "sector_weights": {
+          "ETF_Commodity": 0.39509656448598085,
+          "Materials": 0.005152980029384351,
+          "Consumer": 0.11224872311691034,
+          "Communication": 0.0,
+          "REIT": 9.568457048114999e-16,
+          "ETF_Bonds": 0.012423954526539997,
+          "Utilities": 0.0,
+          "Financial": 0.13735546436629584,
+          "Healthcare": 8.084890579419408e-15,
+          "ETF_REIT": 3.038549836185723e-16,
+          "Energy": 1.8716644193335173e-14,
+          "ETF_International": 0.0,
+          "ETF_Tech": 1.6681440225111679e-15,
+          "ETF_Emerging": 0.0,
+          "ETF_Broad": 1.185479499354337e-15,
+          "ETF_Small": 2.461869549641192e-15,
+          "Technology": 0.27231011745728534,
+          "Industrial": 0.06541219601761149
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.39509656448598085,
+        "MSFT": 0.2259396778418928,
+        "GS": 0.13735546436629514
+      }
+    },
+    "enhanced": {
+      "return": 0.4023399026994492,
+      "volatility": 0.14221025363829032,
+      "sharpe": 2.688553693687412,
+      "max_weight": 0.199999999999995,
+      "active_assets": 8,
+      "constraint_analysis": {
+        "max_asset_weight": 0.199999999999995,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 8,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "0": 0.26395333965725704,
+          "1": 0.248308578564868,
+          "2": 1.0162692822245482e-14,
+          "3": 0.48773808177789235
+        },
+        "max_cluster_weight": 0.48773808177789235,
+        "max_cluster_constraint_satisfied": false,
+        "sector_weights": {
+          "ETF_Commodity": 0.19999999999997742,
+          "Materials": 0.06395333965727962,
+          "Consumer": 0.1468187756077999,
+          "Communication": 0.0,
+          "REIT": 0.0,
+          "ETF_Bonds": 0.10148980295704986,
+          "Utilities": 0.0,
+          "Financial": 0.15236422505863612,
+          "Healthcare": 8.221267321909918e-15,
+          "ETF_REIT": 2.854203759425172e-15,
+          "Energy": 7.123150219620283e-15,
+          "ETF_International": 2.0967124648420855e-16,
+          "ETF_Tech": 3.850024145992056e-15,
+          "ETF_Emerging": 0.0,
+          "ETF_Broad": 3.1493756205575794e-15,
+          "ETF_Small": 2.953621809211638e-15,
+          "Technology": 0.25957312270077754,
+          "Industrial": 0.0758007340184788
+        }
+      },
+      "top_3_assets": {
+        "MSFT": 0.199999999999995,
+        "GLD": 0.19999999999997742,
+        "GS": 0.15236422505863154
+      }
+    },
+    "strict": {
+      "return": 0.34337737164480653,
+      "volatility": 0.1236825642409022,
+      "sharpe": 2.614575252619679,
+      "max_weight": 0.19999999999999726,
+      "active_assets": 9,
+      "constraint_analysis": {
+        "max_asset_weight": 0.19999999999999726,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 9,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "0": 0.2665595906915292,
+          "1": 0.33344040930850916,
+          "2": 2.0367943014512053e-14,
+          "3": 0.39999999999999014
+        },
+        "max_cluster_weight": 0.39999999999999014,
+        "max_cluster_constraint_satisfied": true,
+        "sector_weights": {
+          "ETF_Commodity": 0.19999999999999726,
+          "Materials": 0.0665595906915319,
+          "Consumer": 0.15000000000000777,
+          "Communication": 0.016353328660135582,
+          "REIT": 0.0,
+          "ETF_Bonds": 0.18344040930846206,
+          "Utilities": 2.1751894056645998e-15,
+          "Financial": 0.1499999999999929,
+          "Healthcare": 9.28962642499682e-15,
+          "ETF_REIT": 4.89024252267679e-15,
+          "Energy": 1.9065939156827252e-14,
+          "ETF_International": 0.0,
+          "ETF_Tech": 1.366886778326789e-14,
+          "ETF_Emerging": 0.0,
+          "ETF_Broad": 3.3229418294446127e-15,
+          "ETF_Small": 3.376133401799552e-15,
+          "Technology": 0.15000000000000596,
+          "Industrial": 0.0836466713398596
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.19999999999999726,
+        "TLT": 0.18344040930846206,
+        "WMT": 0.15000000000000083
+      }
+    }
+  },
+  "conservative": {
+    "basic": {
+      "return": 0.21593014246320608,
+      "volatility": 0.15493594904581823,
+      "sharpe": 1.264588003428855,
+      "max_weight": 0.3787641283386384,
+      "active_assets": 7,
+      "constraint_analysis": {
+        "max_asset_weight": 0.3787641283386384,
+        "max_weight_constraint_satisfied": false,
+        "active_assets": 7,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.2654249026931275,
+          "1": 0.3558109689682364,
+          "0": 0.37876412833863843,
+          "2": 1.2019812804842184e-15
+        },
+        "max_cluster_weight": 0.37876412833863843,
+        "max_cluster_constraint_satisfied": true,
+        "sector_weights": {
+          "Technology": 0.23649235109444242,
+          "Healthcare": 0.11845294600221073,
+          "Financial": 0.02893255159868452,
+          "Consumer": 0.2373580229660251,
+          "Energy": 3.238865027275122e-16,
+          "Industrial": 5.022325819496007e-16,
+          "Communication": 3.087940661925502e-17,
+          "Utilities": 1.0580219343719263e-16,
+          "REIT": 1.711768252452703e-17,
+          "Materials": 3.3053993901455073e-17,
+          "ETF_Broad": 1.517400906768069e-16,
+          "ETF_Tech": 1.70702393270841e-16,
+          "ETF_Small": 4.688582995929766e-16,
+          "ETF_International": 1.6130239916661193e-16,
+          "ETF_Emerging": 2.493780977769819e-16,
+          "ETF_Bonds": 2.4269277094539144e-17,
+          "ETF_Commodity": 0.3787641283386384,
+          "ETF_REIT": 1.6012277721291589e-16
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.3787641283386384,
+        "NVDA": 0.22254766236449833,
+        "WMT": 0.15129957391406992
+      }
+    },
+    "enhanced": {
+      "return": 0.21148664753809732,
+      "volatility": 0.15503294852813443,
+      "sharpe": 1.2351351719492552,
+      "max_weight": 0.2,
+      "active_assets": 12,
+      "constraint_analysis": {
+        "max_asset_weight": 0.2,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 12,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.27159460349830145,
+          "1": 0.5148722113676438,
+          "0": 0.21353318513405617,
+          "2": 7.967905055207523e-16
+        },
+        "max_cluster_weight": 0.5148722113676438,
+        "max_cluster_constraint_satisfied": false,
+        "sector_weights": {
+          "Technology": 0.2285213466762903,
+          "Healthcare": 0.1387704811758581,
+          "Financial": 0.027219057171883533,
+          "Consumer": 0.3057133353343499,
+          "Energy": 4.7495062136290697e-17,
+          "Industrial": 0.01585419965012772,
+          "Communication": 6.153673871740187e-16,
+          "Utilities": 0.019022910136741407,
+          "REIT": 2.907629904511848e-17,
+          "Materials": 0.013533185134056169,
+          "ETF_Broad": 3.401746774026583e-16,
+          "ETF_Tech": 2.3877306691915488e-17,
+          "ETF_Small": 2.4807240173154e-16,
+          "ETF_International": 0.0,
+          "ETF_Emerging": 1.846661196946385e-16,
+          "ETF_Bonds": 0.051365484720693626,
+          "ETF_Commodity": 0.2,
+          "ETF_REIT": 0.0
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.2,
+        "NVDA": 0.19999999999999996,
+        "WMT": 0.18993752068818737
+      }
+    },
+    "strict": {
+      "return": 0.18605766677490382,
+      "volatility": 0.1407463578218906,
+      "sharpe": 1.1798363335628461,
+      "max_weight": 0.19999999999999996,
+      "active_assets": 12,
+      "constraint_analysis": {
+        "max_asset_weight": 0.19999999999999996,
+        "max_weight_constraint_satisfied": true,
+        "active_assets": 12,
+        "min_assets_constraint_satisfied": true,
+        "cluster_weights": {
+          "3": 0.334687638495198,
+          "1": 0.4000000000000028,
+          "0": 0.2653123615048044,
+          "2": 4.873214666491825e-16
+        },
+        "max_cluster_weight": 0.4000000000000028,
+        "max_cluster_constraint_satisfied": true,
+        "sector_weights": {
+          "Technology": 0.15000000000000133,
+          "Healthcare": 0.13788734439823777,
+          "Financial": 0.11356203542900847,
+          "Consumer": 0.15000000000000108,
+          "Energy": 3.9475897666118075e-16,
+          "Industrial": 0.047883265068081236,
+          "Communication": 3.0692079085383674e-16,
+          "Utilities": 0.032993481866361536,
+          "REIT": 6.891609816307719e-17,
+          "Materials": 0.06531236150480443,
+          "ETF_Broad": 2.445460463114496e-16,
+          "ETF_Tech": 3.650800589509002e-17,
+          "ETF_Small": 7.184709711234728e-17,
+          "ETF_International": 3.3644748726491333e-17,
+          "ETF_Emerging": 1.0077556860380421e-16,
+          "ETF_Bonds": 0.1023615117335083,
+          "ETF_Commodity": 0.19999999999999996,
+          "ETF_REIT": 2.0574671634728138e-16
+        }
+      },
+      "top_3_assets": {
+        "GLD": 0.19999999999999996,
+        "NVDA": 0.15000000000000013,
+        "WMT": 0.12286618276258089
+      }
+    }
+  }
+}

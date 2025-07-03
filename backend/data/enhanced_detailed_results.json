@@ -1,0 +1,167 @@
+{
+  "Maximum Sharpe": {
+    "expected_return": 0.4023399026994492,
+    "volatility": 0.14221025363829032,
+    "sharpe_ratio": 2.688553693687412,
+    "optimization_method": "max_sharpe_enhanced",
+    "weights": {
+      "GLD": 0.19999999999997742,
+      "NEM": 0.06395333965727812,
+      "WMT": 0.1468187756077878,
+      "TLT": 0.10148980295704986,
+      "MSFT": 0.199999999999995,
+      "NVDA": 0.05957312270076403,
+      "GS": 0.15236422505863154,
+      "GE": 0.07580073401847705
+    },
+    "constraint_analysis": {
+      "max_asset_weight": 0.199999999999995,
+      "active_assets": 8,
+      "max_cluster_weight": 0.48773808177789235,
+      "constraints_satisfied": {
+        "max_weight": true,
+        "min_assets": true,
+        "cluster_limits": false
+      }
+    }
+  },
+  "Minimum Variance": {
+    "expected_return": 0.09687654516903604,
+    "volatility": 0.08966270724872986,
+    "sharpe_ratio": 0.8573970999534486,
+    "optimization_method": "min_variance_enhanced",
+    "weights": {
+      "GLD": 0.19999999999999996,
+      "WMT": 0.0897782993705738,
+      "KO": 0.029490126744377215,
+      "TLT": 0.19999999999999993,
+      "VZ": 0.06821011536288277,
+      "MCD": 0.07626254509097456,
+      "PG": 0.03421625631547928,
+      "JNJ": 0.1024703451906782,
+      "PFE": 0.00837698458121266,
+      "ABBV": 0.024225357906055088,
+      "UNH": 0.0023713227434213877,
+      "XOM": 0.01580577733951488,
+      "EFA": 0.13094868291617293,
+      "JPM": 0.017844186438657064
+    },
+    "constraint_analysis": {
+      "max_asset_weight": 0.19999999999999996,
+      "active_assets": 12,
+      "max_cluster_weight": 0.6512071306451699,
+      "constraints_satisfied": {
+        "max_weight": true,
+        "min_assets": true,
+        "cluster_limits": false
+      }
+    }
+  },
+  "Max Sharpe Enhanced": {
+    "expected_return": 0.4023399026994492,
+    "volatility": 0.14221025363829032,
+    "sharpe_ratio": 2.688553693687412,
+    "optimization_method": "max_sharpe_enhanced",
+    "weights": {
+      "GLD": 0.19999999999997742,
+      "NEM": 0.06395333965727812,
+      "WMT": 0.1468187756077878,
+      "TLT": 0.10148980295704986,
+      "MSFT": 0.199999999999995,
+      "NVDA": 0.05957312270076403,
+      "GS": 0.15236422505863154,
+      "GE": 0.07580073401847705
+    },
+    "constraint_analysis": {
+      "max_asset_weight": 0.199999999999995,
+      "active_assets": 8,
+      "max_cluster_weight": 0.48773808177789235,
+      "constraints_satisfied": {
+        "max_weight": true,
+        "min_assets": true,
+        "cluster_limits": false
+      }
+    }
+  },
+  "Max Sharpe Strict": {
+    "expected_return": 0.34337737164480653,
+    "volatility": 0.1236825642409022,
+    "sharpe_ratio": 2.614575252619679,
+    "optimization_method": "max_sharpe_strict",
+    "weights": {
+      "GLD": 0.19999999999999726,
+      "NEM": 0.06655959069153093,
+      "WMT": 0.15000000000000083,
+      "TLT": 0.18344040930846206,
+      "MSFT": 0.10794425232440816,
+      "NVDA": 0.04205574767558525,
+      "GS": 0.14999999999998898,
+      "GE": 0.08364667133985923,
+      "DIS": 0.016353328660135582
+    },
+    "constraint_analysis": {
+      "max_asset_weight": 0.19999999999999726,
+      "active_assets": 9,
+      "max_cluster_weight": 0.39999999999999014,
+      "constraints_satisfied": {
+        "max_weight": true,
+        "min_assets": true,
+        "cluster_limits": true
+      }
+    }
+  },
+  "Cluster Equal Weight": {
+    "expected_return": 0.3412426800890245,
+    "volatility": 0.14774290166807094,
+    "sharpe_ratio": 2.17433579862097,
+    "optimization_method": "cluster_equal_weight",
+    "weights": {
+      "GLD": 0.16359707573571228,
+      "NEM": 0.053757853748731446,
+      "LIN": 0.0326450705155563,
+      "WMT": 0.22257667373557313,
+      "T": 0.00478160898815802,
+      "AMT": 0.005470901105080281,
+      "V": 0.016826163586709485,
+      "EFA": 0.09321792083402215,
+      "QQQ": 0.156782079165978,
+      "MSFT": 0.1307093490793449,
+      "NVDA": 0.025608569921029962,
+      "GS": 0.05996698280713389,
+      "GE": 0.033715098192491126
+    },
+    "cluster_allocation": {
+      "0": 0.25,
+      "1": 0.25,
+      "2": 0.25,
+      "3": 0.25
+    }
+  },
+  "Cluster Sharpe Weighted": {
+    "expected_return": 0.38820706217077283,
+    "volatility": 0.16033535432909352,
+    "sharpe_ratio": 2.2964807962130167,
+    "optimization_method": "cluster_sharpe_weighted",
+    "weights": {
+      "GLD": 0.1339483981145469,
+      "NEM": 0.044015324622008384,
+      "LIN": 0.026728808459628505,
+      "WMT": 0.18699269386617465,
+      "T": 0.004017159258892631,
+      "AMT": 0.004596252241282777,
+      "V": 0.014136115899771737,
+      "EFA": 0.07510299274446672,
+      "QQQ": 0.1263148035132677,
+      "MSFT": 0.20069526462905005,
+      "NVDA": 0.03932020741647777,
+      "GS": 0.09207520019228108,
+      "GE": 0.05176722706827152
+    },
+    "cluster_allocation": {
+      "0": 0.20469253119618377,
+      "1": 0.21003177324000136,
+      "2": 0.20141779625773432,
+      "3": 0.3838578993060806
+    }
+  }
+}
