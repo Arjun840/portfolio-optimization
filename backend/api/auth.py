@@ -15,10 +15,11 @@ security = HTTPBearer()
 
 # In-memory user store (use database in production)
 fake_users_db = {
-    "demo@example.com": {
-        "email": "demo@example.com",
-        "hashed_password": pwd_context.hash("demopassword"),
-        "full_name": "Demo User"
+    "demo@portfoliomax.com": {
+        "email": "demo@portfoliomax.com",
+        "hashed_password": pwd_context.hash("demo123"),
+        "full_name": "Demo User",
+        "saved_portfolios": {}  # saved_id -> portfolio_data
     }
 }
 
@@ -80,4 +81,50 @@ def authenticate_user(email: str, password: str) -> Optional[dict]:
     user = fake_users_db.get(email)
     if not user or not verify_password(password, user["hashed_password"]):
         return None
-    return user 
+    return user
+
+def get_user_saved_portfolios(email: str) -> dict:
+    """Get all saved portfolios for a user"""
+    user = fake_users_db.get(email)
+    if not user:
+        return {}
+    return user.get("saved_portfolios", {})
+
+def save_user_portfolio(email: str, saved_id: str, portfolio_data: dict) -> bool:
+    """Save a portfolio for a user"""
+    user = fake_users_db.get(email)
+    if not user:
+        return False
+    
+    if "saved_portfolios" not in user:
+        user["saved_portfolios"] = {}
+    
+    user["saved_portfolios"][saved_id] = portfolio_data
+    return True
+
+def delete_user_portfolio(email: str, saved_id: str) -> bool:
+    """Delete a saved portfolio for a user"""
+    user = fake_users_db.get(email)
+    if not user or "saved_portfolios" not in user:
+        return False
+    
+    if saved_id in user["saved_portfolios"]:
+        del user["saved_portfolios"][saved_id]
+        return True
+    return False
+
+def update_user_portfolio(email: str, saved_id: str, updates: dict) -> bool:
+    """Update metadata for a saved portfolio"""
+    user = fake_users_db.get(email)
+    if not user or "saved_portfolios" not in user:
+        return False
+    
+    if saved_id not in user["saved_portfolios"]:
+        return False
+    
+    portfolio = user["saved_portfolios"][saved_id]
+    for key, value in updates.items():
+        if value is not None:
+            portfolio[key] = value
+    
+    return True 

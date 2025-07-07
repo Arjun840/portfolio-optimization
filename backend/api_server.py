@@ -43,8 +43,9 @@ async def root():
         "endpoints": {
             "authentication": ["/auth/signup", "/auth/login"],
             "data": ["/data/stocks", "/data/clusters"],
-            "optimization": ["/optimize", "/data/efficient-frontier"],
-            "analysis": ["/data/historical/{portfolio_id}"]
+            "optimization": ["/optimize", "/optimize/custom", "/data/efficient-frontier"],
+            "analysis": ["/data/historical/{portfolio_id}"],
+            "portfolio_management": ["/portfolios/save", "/portfolios", "/portfolios/{saved_id}", "/portfolios/compare"]
         }
     }
 
@@ -75,6 +76,14 @@ async def optimize_portfolio_endpoint(
 ):
     return await optimize_portfolio(request, portfolio_value, current_user)
 
+@app.post("/optimize/custom", response_model=OptimizedPortfolio, summary="Optimize Custom Portfolio")
+async def optimize_custom_portfolio_endpoint(
+    request: CustomPortfolioRequest,
+    portfolio_value: float = Query(100000, description="Total portfolio value in USD"),
+    current_user: dict = Depends(get_current_user)
+):
+    return await optimize_custom_portfolio(request, portfolio_value, current_user)
+
 @app.get("/data/historical/{portfolio_id}", response_model=HistoricalPerformance, summary="Get Historical Performance")
 async def get_historical_performance_endpoint(
     portfolio_id: str,
@@ -90,6 +99,47 @@ async def get_efficient_frontier_endpoint(
     current_user: dict = Depends(get_current_user)
 ):
     return await get_efficient_frontier(constraint_level, return_method, current_user)
+
+# Portfolio management endpoints
+@app.post("/portfolios/save", response_model=SavedPortfolioDetail, summary="Save Portfolio")
+async def save_portfolio_endpoint(
+    request: SavePortfolioRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    return await save_portfolio(request, current_user)
+
+@app.get("/portfolios", response_model=List[SavedPortfolioSummary], summary="Get All Saved Portfolios")
+async def get_saved_portfolios_endpoint(current_user: dict = Depends(get_current_user)):
+    return await get_saved_portfolios(current_user)
+
+@app.get("/portfolios/{saved_id}", response_model=SavedPortfolioDetail, summary="Get Saved Portfolio by ID")
+async def get_saved_portfolio_endpoint(
+    saved_id: str,
+    current_user: dict = Depends(get_current_user)
+):
+    return await get_saved_portfolio(saved_id, current_user)
+
+@app.put("/portfolios/{saved_id}", response_model=SavedPortfolioDetail, summary="Update Saved Portfolio")
+async def update_saved_portfolio_endpoint(
+    saved_id: str,
+    request: UpdatePortfolioRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    return await update_saved_portfolio(saved_id, request, current_user)
+
+@app.delete("/portfolios/{saved_id}", summary="Delete Saved Portfolio")
+async def delete_saved_portfolio_endpoint(
+    saved_id: str,
+    current_user: dict = Depends(get_current_user)
+):
+    return await delete_saved_portfolio(saved_id, current_user)
+
+@app.post("/portfolios/compare", response_model=PortfolioComparison, summary="Compare Multiple Portfolios")
+async def compare_portfolios_endpoint(
+    request: PortfolioComparisonRequest,
+    current_user: dict = Depends(get_current_user)
+):
+    return await compare_portfolios(request, current_user)
 
 if __name__ == "__main__":
     import uvicorn

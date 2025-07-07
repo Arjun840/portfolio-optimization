@@ -1,10 +1,11 @@
 from fastapi import HTTPException, Depends, status
 from datetime import datetime, timedelta
 import logging
+import uuid
 from typing import List, Dict, Any
 
 from .models import *
-from .auth import get_current_user, register_user, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from .auth import get_current_user, register_user, authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_user_saved_portfolios, save_user_portfolio, delete_user_portfolio, update_user_portfolio
 from .data_utils import load_stock_data, calculate_portfolio_metrics, get_cluster_names, get_cluster_info, generate_sample_historical_data
 from scripts.portfolio_optimization import PortfolioOptimizer
 
@@ -73,9 +74,9 @@ async def get_stocks(current_user: dict = Depends(get_current_user)) -> List[Sto
                 sector=row.get('Sector', 'Unknown'),
                 cluster=int(cluster_id),
                 cluster_name=cluster_names.get(int(cluster_id), f"Cluster {cluster_id}"),
-                sharpe_ratio=float(row.get('Sharpe', 0.0)),
-                volatility=float(row.get('Volatility', 0.0)),
-                expected_return=float(row.get('Expected_Return', 0.0)) if 'Expected_Return' in row else 0.0
+                sharpe_ratio=float(row.get('sharpe_ratio', 0.0)),
+                volatility=float(row.get('annual_volatility', 0.0)),
+                expected_return=float(row.get('mean_annual_return', 0.0))
             ))
         
         return stocks
@@ -177,9 +178,9 @@ async def optimize_portfolio(
                     symbol=symbol,
                     weight=float(weight),
                     allocation_amount=float(allocation_amount),
-                    expected_return=float(asset_row.get('Expected_Return', 0.0)) if 'Expected_Return' in asset_row else 0.0,
-                    volatility=float(asset_row.get('Volatility', 0.0)),
-                    sharpe_ratio=float(asset_row.get('Sharpe', 0.0)),
+                    expected_return=float(asset_row.get('mean_annual_return', 0.0)),
+                    volatility=float(asset_row.get('annual_volatility', 0.0)),
+                    sharpe_ratio=float(asset_row.get('sharpe_ratio', 0.0)),
                     sector=sector,
                     cluster=int(cluster_id)
                 ))
@@ -219,6 +220,191 @@ async def optimize_portfolio(
     except Exception as e:
         logger.error(f"Error optimizing portfolio: {e}")
         raise HTTPException(status_code=500, detail=f"Portfolio optimization failed: {str(e)}")
+
+async def optimize_custom_portfolio(
+    request: CustomPortfolioRequest,
+    portfolio_value: float = 100000,
+    current_user: dict = Depends(get_current_user)
+) -> OptimizedPortfolio:
+    """
+    Optimize a custom portfolio created by the user
+    """
+    try:
+        # Validate initial holdings weights sum
+        total_weight = sum(holding.weight for holding in request.holdings)
+        if abs(total_weight - 1.0) > 0.01:
+            raise HTTPException(status_code=400, detail=f"Portfolio weights must sum to 1.0, got {total_weight:.3f}")
+        
+        # Load data
+        data, features_df, cluster_data = load_stock_data()
+        
+        # Initialize optimizer and load data
+        optimizer = PortfolioOptimizer(data_dir="data")
+        if not optimizer.load_data():
+            raise HTTPException(status_code=500, detail="Failed to load optimization data")
+        
+        # Calculate expected returns and covariance matrix
+        optimizer.calculate_expected_returns(method=request.return_method)
+        optimizer.calculate_covariance_matrix(method="historical")
+        
+        # Convert custom holdings to optimizer format
+        initial_weights = {holding.symbol: holding.weight for holding in request.holdings}
+        
+        # Validate all symbols exist in the data
+        available_assets = set(data['returns'].columns)
+        invalid_symbols = [symbol for symbol in initial_weights.keys() if symbol not in available_assets]
+        if invalid_symbols:
+            raise HTTPException(status_code=400, detail=f"Invalid symbols: {invalid_symbols}")
+        
+        # Set up optimization based on type
+        if request.optimization_type == "improve":
+            # Try to improve the portfolio
+            if request.target_return:
+                result = optimizer.minimize_variance(
+                    target_return=request.target_return,
+                    constraint_type=request.constraint_level
+                )
+            else:
+                result = optimizer.maximize_sharpe_ratio(
+                    constraint_type=request.constraint_level
+                )
+        elif request.optimization_type == "rebalance":
+            # For rebalancing, we'll optimize and then filter to existing holdings if needed
+            if request.target_return:
+                result = optimizer.minimize_variance(
+                    target_return=request.target_return,
+                    constraint_type=request.constraint_level
+                )
+            else:
+                result = optimizer.maximize_sharpe_ratio(
+                    constraint_type=request.constraint_level
+                )
+        else:  # risk_adjust
+            # Adjust for target risk level
+            if request.target_return:
+                result = optimizer.minimize_variance(
+                    target_return=request.target_return,
+                    constraint_type=request.constraint_level
+                )
+            else:
+                result = optimizer.minimize_variance(
+                    constraint_type=request.constraint_level
+                )
+        
+        # Process optimization result
+        optimized_weights_series = result['weights']
+        optimized_weights = optimized_weights_series.to_dict()
+        
+        # Apply custom portfolio logic
+        if request.optimization_type == "rebalance" and not request.allow_new_assets:
+            # Keep only original assets for rebalancing
+            original_assets = set(initial_weights.keys())
+            optimized_weights = {k: v for k, v in optimized_weights.items() if k in original_assets}
+            # Renormalize weights
+            total_weight = sum(optimized_weights.values())
+            if total_weight > 0:
+                optimized_weights = {k: v/total_weight for k, v in optimized_weights.items()}
+        
+        # If preserve_core_holdings is True, ensure core holdings remain
+        if request.preserve_core_holdings and request.core_holdings:
+            for symbol in request.core_holdings:
+                if symbol in initial_weights:
+                    current_weight = optimized_weights.get(symbol, 0)
+                    min_weight = initial_weights[symbol] * 0.5  # Preserve at least 50%
+                    if current_weight < min_weight:
+                        optimized_weights[symbol] = min_weight
+        
+        # Filter out very small weights
+        significant_weights = {k: v for k, v in optimized_weights.items() if v > 0.001}
+        
+        # Normalize weights to sum to 1
+        total_weight = sum(significant_weights.values())
+        if total_weight > 0:
+            significant_weights = {k: v/total_weight for k, v in significant_weights.items()}
+        
+        # Calculate metrics for both original and optimized portfolios
+        original_metrics = calculate_portfolio_metrics(initial_weights, data['returns'])
+        optimized_metrics = calculate_portfolio_metrics(significant_weights, data['returns'])
+        
+        metrics = PortfolioMetrics(**optimized_metrics)
+        
+        # Create holdings
+        holdings = []
+        cluster_allocation = {}
+        sector_allocation = {}
+        
+        cluster_names = get_cluster_names()
+        
+        for symbol, weight in significant_weights.items():
+            # Get asset info
+            asset_info = features_df[features_df['Asset'] == symbol]
+            if len(asset_info) > 0:
+                asset_row = asset_info.iloc[0]
+                sector = asset_row.get('Sector', 'Unknown')
+                cluster_id = cluster_data.get("asset_clusters", {}).get(symbol, 0)
+                
+                allocation_amount = weight * portfolio_value
+                
+                holdings.append(PortfolioHolding(
+                    symbol=symbol,
+                    weight=float(weight),
+                    allocation_amount=float(allocation_amount),
+                    expected_return=float(asset_row.get('mean_annual_return', 0.0)),
+                    volatility=float(asset_row.get('annual_volatility', 0.0)),
+                    sharpe_ratio=float(asset_row.get('sharpe_ratio', 0.0)),
+                    sector=sector,
+                    cluster=int(cluster_id)
+                ))
+                
+                # Aggregate cluster allocation
+                cluster_allocation[int(cluster_id)] = cluster_allocation.get(int(cluster_id), 0) + weight
+                
+                # Aggregate sector allocation
+                sector_allocation[sector] = sector_allocation.get(sector, 0) + weight
+        
+        # Sort holdings by weight
+        holdings.sort(key=lambda x: x.weight, reverse=True)
+        
+        # Calculate improvement metrics
+        improvement_metrics = {
+            "original_sharpe": original_metrics["sharpe_ratio"],
+            "optimized_sharpe": optimized_metrics["sharpe_ratio"],
+            "improvement_pct": ((optimized_metrics["sharpe_ratio"] - original_metrics["sharpe_ratio"]) / abs(original_metrics["sharpe_ratio"]) * 100) if original_metrics["sharpe_ratio"] != 0 else 0,
+            "original_return": original_metrics["expected_return"],
+            "optimized_return": optimized_metrics["expected_return"],
+            "original_volatility": original_metrics["volatility"],
+            "optimized_volatility": optimized_metrics["volatility"],
+            "optimization_type": request.optimization_type
+        }
+        
+        # Create portfolio response
+        portfolio = OptimizedPortfolio(
+            portfolio_id=f"custom_portfolio_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+            strategy=f"Custom Portfolio - {request.optimization_type.replace('_', ' ').title()}",
+            total_amount=portfolio_value,
+            holdings=holdings,
+            metrics=metrics,
+            cluster_allocation=cluster_allocation,
+            sector_allocation=sector_allocation,
+            optimization_details={
+                "constraint_level": request.constraint_level,
+                "return_method": request.return_method,
+                "optimization_type": request.optimization_type,
+                "max_position_size": request.max_position_size,
+                "allow_new_assets": request.allow_new_assets,
+                "preserve_core_holdings": request.preserve_core_holdings,
+                "optimization_status": result.get('success', True),
+                "optimization_message": result.get('message', 'Custom portfolio optimization completed successfully'),
+                "improvement_metrics": improvement_metrics
+            },
+            created_at=datetime.now()
+        )
+        
+        return portfolio
+        
+    except Exception as e:
+        logger.error(f"Error optimizing custom portfolio: {e}")
+        raise HTTPException(status_code=500, detail=f"Custom portfolio optimization failed: {str(e)}")
 
 async def get_historical_performance(
     portfolio_id: str,
@@ -275,18 +461,18 @@ async def get_efficient_frontier(
         
         # Convert DataFrame to the expected format
         frontier_data = {
-            'returns': frontier_df['Return'].tolist(),
-            'volatilities': frontier_df['Volatility'].tolist(),
-            'sharpe_ratios': frontier_df['Sharpe'].tolist(),
+            'returns': frontier_df['return'].tolist(),
+            'volatilities': frontier_df['volatility'].tolist(),
+            'sharpe_ratios': frontier_df['sharpe'].tolist(),
             'max_sharpe': {
-                'return': float(frontier_df.loc[frontier_df['Sharpe'].idxmax(), 'Return']),
-                'volatility': float(frontier_df.loc[frontier_df['Sharpe'].idxmax(), 'Volatility']),
-                'sharpe': float(frontier_df['Sharpe'].max())
+                'return': float(frontier_df.loc[frontier_df['sharpe'].idxmax(), 'return']),
+                'volatility': float(frontier_df.loc[frontier_df['sharpe'].idxmax(), 'volatility']),
+                'sharpe': float(frontier_df['sharpe'].max())
             },
             'min_variance': {
-                'return': float(frontier_df.loc[frontier_df['Volatility'].idxmin(), 'Return']),
-                'volatility': float(frontier_df['Volatility'].min()),
-                'sharpe': float(frontier_df.loc[frontier_df['Volatility'].idxmin(), 'Sharpe'])
+                'return': float(frontier_df.loc[frontier_df['volatility'].idxmin(), 'return']),
+                'volatility': float(frontier_df['volatility'].min()),
+                'sharpe': float(frontier_df.loc[frontier_df['volatility'].idxmin(), 'sharpe'])
             }
         }
         
@@ -308,4 +494,226 @@ async def get_efficient_frontier(
         
     except Exception as e:
         logger.error(f"Error generating efficient frontier: {e}")
-        raise HTTPException(status_code=500, detail="Failed to generate efficient frontier") 
+        raise HTTPException(status_code=500, detail="Failed to generate efficient frontier")
+
+# ============================================================================
+# SAVED PORTFOLIO MANAGEMENT ENDPOINTS
+# ============================================================================
+
+async def save_portfolio(
+    request: SavePortfolioRequest,
+    current_user: dict = Depends(get_current_user)
+) -> SavedPortfolioDetail:
+    """Save a portfolio for the current user"""
+    try:
+        user_email = current_user["email"]
+        saved_id = str(uuid.uuid4())
+        
+        # Prepare portfolio data for storage
+        portfolio_data = {
+            "saved_id": saved_id,
+            "portfolio_name": request.portfolio_name,
+            "description": request.description,
+            "portfolio_data": request.portfolio_data.dict(),
+            "created_at": datetime.now(),
+            "last_updated": datetime.now()
+        }
+        
+        # Save to user's portfolio collection
+        success = save_user_portfolio(user_email, saved_id, portfolio_data)
+        
+        if not success:
+            raise HTTPException(status_code=500, detail="Failed to save portfolio")
+        
+        return SavedPortfolioDetail(**portfolio_data)
+        
+    except Exception as e:
+        logger.error(f"Error saving portfolio: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to save portfolio: {str(e)}")
+
+async def get_saved_portfolios(
+    current_user: dict = Depends(get_current_user)
+) -> List[SavedPortfolioSummary]:
+    """Get all saved portfolios for the current user"""
+    try:
+        user_email = current_user["email"]
+        saved_portfolios = get_user_saved_portfolios(user_email)
+        
+        summaries = []
+        for saved_id, portfolio_data in saved_portfolios.items():
+            portfolio_metrics = portfolio_data["portfolio_data"]["metrics"]
+            
+            summary = SavedPortfolioSummary(
+                saved_id=saved_id,
+                portfolio_name=portfolio_data["portfolio_name"],
+                description=portfolio_data.get("description"),
+                strategy=portfolio_data["portfolio_data"]["strategy"],
+                total_amount=float(portfolio_data["portfolio_data"]["total_amount"]),
+                expected_return=float(portfolio_metrics["expected_return"]),
+                volatility=float(portfolio_metrics["volatility"]),
+                sharpe_ratio=float(portfolio_metrics["sharpe_ratio"]),
+                created_at=portfolio_data["created_at"],
+                last_updated=portfolio_data["last_updated"]
+            )
+            summaries.append(summary)
+        
+        # Sort by last updated (most recent first)
+        summaries.sort(key=lambda x: x.last_updated, reverse=True)
+        
+        return summaries
+        
+    except Exception as e:
+        logger.error(f"Error retrieving saved portfolios: {e}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve saved portfolios")
+
+async def get_saved_portfolio(
+    saved_id: str,
+    current_user: dict = Depends(get_current_user)
+) -> SavedPortfolioDetail:
+    """Get a specific saved portfolio by ID"""
+    try:
+        user_email = current_user["email"]
+        saved_portfolios = get_user_saved_portfolios(user_email)
+        
+        if saved_id not in saved_portfolios:
+            raise HTTPException(status_code=404, detail="Portfolio not found")
+        
+        portfolio_data = saved_portfolios[saved_id]
+        
+        # Convert portfolio_data back to proper models
+        optimized_portfolio = OptimizedPortfolio(**portfolio_data["portfolio_data"])
+        
+        return SavedPortfolioDetail(
+            saved_id=saved_id,
+            portfolio_name=portfolio_data["portfolio_name"],
+            description=portfolio_data.get("description"),
+            portfolio_data=optimized_portfolio,
+            created_at=portfolio_data["created_at"],
+            last_updated=portfolio_data["last_updated"]
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error retrieving saved portfolio {saved_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to retrieve saved portfolio")
+
+async def update_saved_portfolio(
+    saved_id: str,
+    request: UpdatePortfolioRequest,
+    current_user: dict = Depends(get_current_user)
+) -> SavedPortfolioDetail:
+    """Update metadata for a saved portfolio"""
+    try:
+        user_email = current_user["email"]
+        
+        updates = {}
+        if request.portfolio_name is not None:
+            updates["portfolio_name"] = request.portfolio_name
+        if request.description is not None:
+            updates["description"] = request.description
+        
+        updates["last_updated"] = datetime.now()
+        
+        success = update_user_portfolio(user_email, saved_id, updates)
+        
+        if not success:
+            raise HTTPException(status_code=404, detail="Portfolio not found")
+        
+        # Return updated portfolio
+        return await get_saved_portfolio(saved_id, current_user)
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating saved portfolio {saved_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to update saved portfolio")
+
+async def delete_saved_portfolio(
+    saved_id: str,
+    current_user: dict = Depends(get_current_user)
+) -> Dict[str, str]:
+    """Delete a saved portfolio"""
+    try:
+        user_email = current_user["email"]
+        
+        success = delete_user_portfolio(user_email, saved_id)
+        
+        if not success:
+            raise HTTPException(status_code=404, detail="Portfolio not found")
+        
+        return {"message": "Portfolio deleted successfully", "saved_id": saved_id}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error deleting saved portfolio {saved_id}: {e}")
+        raise HTTPException(status_code=500, detail="Failed to delete saved portfolio")
+
+async def compare_portfolios(
+    request: PortfolioComparisonRequest,
+    current_user: dict = Depends(get_current_user)
+) -> PortfolioComparison:
+    """Compare multiple saved portfolios"""
+    try:
+        user_email = current_user["email"]
+        saved_portfolios = get_user_saved_portfolios(user_email)
+        
+        portfolios = []
+        comparison_metrics = {
+            "expected_return": [],
+            "volatility": [],
+            "sharpe_ratio": [],
+            "total_amount": []
+        }
+        
+        for saved_id in request.portfolio_ids:
+            if saved_id not in saved_portfolios:
+                raise HTTPException(status_code=404, detail=f"Portfolio {saved_id} not found")
+            
+            portfolio_data = saved_portfolios[saved_id]
+            metrics = portfolio_data["portfolio_data"]["metrics"]
+            
+            # Create summary
+            summary = SavedPortfolioSummary(
+                saved_id=saved_id,
+                portfolio_name=portfolio_data["portfolio_name"],
+                description=portfolio_data.get("description"),
+                strategy=portfolio_data["portfolio_data"]["strategy"],
+                total_amount=float(portfolio_data["portfolio_data"]["total_amount"]),
+                expected_return=float(metrics["expected_return"]),
+                volatility=float(metrics["volatility"]),
+                sharpe_ratio=float(metrics["sharpe_ratio"]),
+                created_at=portfolio_data["created_at"],
+                last_updated=portfolio_data["last_updated"]
+            )
+            portfolios.append(summary)
+            
+            # Add to comparison metrics
+            comparison_metrics["expected_return"].append(float(metrics["expected_return"]))
+            comparison_metrics["volatility"].append(float(metrics["volatility"]))
+            comparison_metrics["sharpe_ratio"].append(float(metrics["sharpe_ratio"]))
+            comparison_metrics["total_amount"].append(float(portfolio_data["portfolio_data"]["total_amount"]))
+        
+        # Find best performers
+        best_performers = {}
+        for metric, values in comparison_metrics.items():
+            if metric == "volatility":
+                # Lower is better for volatility
+                best_idx = values.index(min(values))
+            else:
+                # Higher is better for other metrics
+                best_idx = values.index(max(values))
+            best_performers[metric] = request.portfolio_ids[best_idx]
+        
+        return PortfolioComparison(
+            portfolios=portfolios,
+            comparison_metrics=comparison_metrics,
+            best_performers=best_performers
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error comparing portfolios: {e}")
+        raise HTTPException(status_code=500, detail="Failed to compare portfolios") 
