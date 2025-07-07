@@ -16,6 +16,7 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
   const [isOptimizing, setIsOptimizing] = useState(false);
   const [optimizationResult, setOptimizationResult] = useState(null);
   const [errors, setErrors] = useState({});
+  const [originalPortfolio, setOriginalPortfolio] = useState([]);
 
   // Calculate total weight
   const totalWeight = portfolioHoldings.reduce((sum, holding) => sum + holding.weight, 0);
@@ -101,6 +102,9 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
 
     setIsOptimizing(true);
     setErrors({});
+    
+    // Save original portfolio before optimization
+    setOriginalPortfolio([...portfolioHoldings]);
 
     try {
       const holdings = portfolioHoldings.map(h => ({
@@ -122,11 +126,45 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
 
       const response = await authService.optimizeCustomPortfolio(request, parseFloat(portfolioValue));
       setOptimizationResult(response);
+      
+      // Update portfolio holdings with optimized allocations
+      if (response.holdings && response.holdings.length > 0) {
+        const optimizedHoldings = response.holdings.map(holding => {
+          const stock = stocks.find(s => s.symbol === holding.symbol);
+          return {
+            symbol: holding.symbol,
+            name: stock?.name || holding.symbol,
+            weight: Math.round(holding.weight * 100 * 100) / 100, // Convert to percentage and round
+            expected_return: stock?.expected_return || 0,
+            volatility: stock?.volatility || 0,
+            sharpe_ratio: stock?.sharpe_ratio || 0,
+            sector: stock?.sector || 'Unknown',
+            cluster: stock?.cluster || 0
+          };
+        });
+        setPortfolioHoldings(optimizedHoldings);
+        
+        // Update core holdings if preserve option was enabled
+        if (preserveCoreHoldings) {
+          const newCoreHoldings = optimizedHoldings
+            .filter(h => coreHoldings.includes(h.symbol))
+            .map(h => h.symbol);
+          setCoreHoldings(newCoreHoldings);
+        }
+      }
     } catch (error) {
       console.error('Optimization error:', error);
       setErrors({ optimize: error.response?.data?.detail || 'Optimization failed' });
     } finally {
       setIsOptimizing(false);
+    }
+  };
+
+  // Reset to original portfolio before optimization
+  const resetToOriginal = () => {
+    if (originalPortfolio.length > 0) {
+      setPortfolioHoldings([...originalPortfolio]);
+      setOptimizationResult(null);
     }
   };
 
@@ -478,9 +516,15 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
 
           {/* Optimization Results */}
           {optimizationResult && (
-            <div className="card">
+            <div className="card border-green-200 bg-green-50">
               <div className="card-header">
-                <h3 className="font-semibold text-gray-900">Optimization Results</h3>
+                <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  Portfolio Optimized Successfully
+                </h3>
+                <p className="text-sm text-green-700 mt-1">
+                  Your portfolio allocations have been updated with the optimized weights.
+                </p>
               </div>
               <div className="card-content">
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -504,13 +548,22 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
                   </div>
                 )}
 
-                <div className="text-sm">
+                <div className="text-sm mb-4">
                   <strong>Strategy:</strong> {optimizationResult.strategy}
                   <br />
                   <strong>Total Value:</strong> ${optimizationResult.total_amount.toLocaleString()}
                   <br />
                   <strong>Active Assets:</strong> {optimizationResult.holdings.length}
                 </div>
+                
+                {originalPortfolio.length > 0 && (
+                  <button
+                    onClick={resetToOriginal}
+                    className="btn-secondary text-sm"
+                  >
+                    Reset to Original Portfolio
+                  </button>
+                )}
               </div>
             </div>
           )}
