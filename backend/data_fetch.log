@@ -103,3 +103,103 @@
 2025-07-01 18:24:23,003 - INFO - Data saved to data directory
 2025-07-01 18:24:23,003 - INFO - === Data Fetching Pipeline Completed ===
 2025-07-01 18:32:54,967 - INFO - Initialized fetcher with 46 assets
+2025-07-08 20:34:26,596 - INFO - Initialized fetcher with 46 assets
+2025-07-08 20:34:26,597 - INFO - === Starting Portfolio Data Fetching Pipeline ===
+2025-07-08 20:34:26,597 - INFO - Fetching data from 2015-07-11 to 2025-07-08
+2025-07-08 20:34:26,597 - INFO - Fetching data for AAPL (Apple Inc.)
+2025-07-08 20:34:26,967 - INFO - Successfully fetched 2511 days of data for AAPL
+2025-07-08 20:34:26,967 - INFO - Fetching data for MSFT (Microsoft Corporation)
+2025-07-08 20:34:27,119 - INFO - Successfully fetched 2511 days of data for MSFT
+2025-07-08 20:34:27,119 - INFO - Fetching data for GOOGL (Alphabet Inc.)
+2025-07-08 20:34:27,243 - INFO - Successfully fetched 2511 days of data for GOOGL
+2025-07-08 20:34:27,243 - INFO - Fetching data for NVDA (NVIDIA Corporation)
+2025-07-08 20:34:27,373 - INFO - Successfully fetched 2511 days of data for NVDA
+2025-07-08 20:34:27,373 - INFO - Fetching data for META (Meta Platforms Inc.)
+2025-07-08 20:34:27,493 - INFO - Successfully fetched 2511 days of data for META
+2025-07-08 20:34:27,493 - INFO - Fetching data for TSLA (Tesla Inc.)
+2025-07-08 20:34:27,646 - INFO - Successfully fetched 2511 days of data for TSLA
+2025-07-08 20:34:27,646 - INFO - Fetching data for JNJ (Johnson & Johnson)
+2025-07-08 20:34:27,864 - INFO - Successfully fetched 2511 days of data for JNJ
+2025-07-08 20:34:27,864 - INFO - Fetching data for PFE (Pfizer Inc.)
+2025-07-08 20:34:28,151 - INFO - Successfully fetched 2511 days of data for PFE
+2025-07-08 20:34:28,151 - INFO - Fetching data for UNH (UnitedHealth Group)
+2025-07-08 20:34:28,421 - INFO - Successfully fetched 2511 days of data for UNH
+2025-07-08 20:34:28,421 - INFO - Fetching data for ABBV (AbbVie Inc.)
+2025-07-08 20:34:28,584 - INFO - Successfully fetched 2511 days of data for ABBV
+2025-07-08 20:34:28,584 - INFO - Fetching data for JPM (JPMorgan Chase & Co.)
+2025-07-08 20:34:28,842 - INFO - Successfully fetched 2511 days of data for JPM
+2025-07-08 20:34:28,842 - INFO - Fetching data for BAC (Bank of America Corp)
+2025-07-08 20:34:29,020 - INFO - Successfully fetched 2511 days of data for BAC
+2025-07-08 20:34:29,020 - INFO - Fetching data for WFC (Wells Fargo & Company)
+2025-07-08 20:34:29,190 - INFO - Successfully fetched 2511 days of data for WFC
+2025-07-08 20:34:29,191 - INFO - Fetching data for GS (Goldman Sachs Group)
+2025-07-08 20:34:29,379 - INFO - Successfully fetched 2511 days of data for GS
+2025-07-08 20:34:29,379 - INFO - Fetching data for V (Visa Inc.)
+2025-07-08 20:34:29,545 - INFO - Successfully fetched 2511 days of data for V
+2025-07-08 20:34:29,545 - INFO - Fetching data for AMZN (Amazon.com Inc.)
+2025-07-08 20:34:29,666 - INFO - Successfully fetched 2511 days of data for AMZN
+2025-07-08 20:34:29,666 - INFO - Fetching data for HD (Home Depot Inc.)
+2025-07-08 20:34:29,925 - INFO - Successfully fetched 2511 days of data for HD
+2025-07-08 20:34:29,926 - INFO - Fetching data for MCD (McDonald's Corporation)
+2025-07-08 20:34:30,140 - INFO - Successfully fetched 2511 days of data for MCD
+2025-07-08 20:34:30,140 - INFO - Fetching data for NKE (Nike Inc.)
+2025-07-08 20:34:30,539 - INFO - Successfully fetched 2511 days of data for NKE
+2025-07-08 20:34:30,539 - INFO - Fetching data for SBUX (Starbucks Corporation)
+2025-07-08 20:34:30,686 - INFO - Successfully fetched 2511 days of data for SBUX
+2025-07-08 20:34:30,686 - INFO - Fetching data for PG (Procter & Gamble Co.)
+2025-07-08 20:34:30,917 - INFO - Successfully fetched 2511 days of data for PG
+2025-07-08 20:34:30,917 - INFO - Fetching data for KO (Coca-Cola Company)
+2025-07-08 20:34:31,141 - INFO - Successfully fetched 2511 days of data for KO
+2025-07-08 20:34:31,141 - INFO - Fetching data for PEP (PepsiCo Inc.)
+2025-07-08 20:34:31,325 - INFO - Successfully fetched 2511 days of data for PEP
+2025-07-08 20:34:31,325 - INFO - Fetching data for WMT (Walmart Inc.)
+2025-07-08 20:34:31,530 - INFO - Successfully fetched 2511 days of data for WMT
+2025-07-08 20:34:31,530 - INFO - Fetching data for XOM (Exxon Mobil Corporation)
+2025-07-08 20:34:31,713 - INFO - Successfully fetched 2511 days of data for XOM
+2025-07-08 20:34:31,714 - INFO - Fetching data for CVX (Chevron Corporation)
+2025-07-08 20:34:31,897 - INFO - Successfully fetched 2511 days of data for CVX
+2025-07-08 20:34:31,898 - INFO - Fetching data for COP (ConocoPhillips)
+2025-07-08 20:34:32,070 - INFO - Successfully fetched 2511 days of data for COP
+2025-07-08 20:34:32,070 - INFO - Fetching data for BA (Boeing Company)
+2025-07-08 20:34:32,297 - INFO - Successfully fetched 2511 days of data for BA
+2025-07-08 20:34:32,297 - INFO - Fetching data for CAT (Caterpillar Inc.)
+2025-07-08 20:34:32,607 - INFO - Successfully fetched 2511 days of data for CAT
+2025-07-08 20:34:32,607 - INFO - Fetching data for GE (General Electric Company)
+2025-07-08 20:34:32,858 - INFO - Successfully fetched 2511 days of data for GE
+2025-07-08 20:34:32,858 - INFO - Fetching data for VZ (Verizon Communications)
+2025-07-08 20:34:33,062 - INFO - Successfully fetched 2511 days of data for VZ
+2025-07-08 20:34:33,063 - INFO - Fetching data for T (AT&T Inc.)
+2025-07-08 20:34:33,305 - INFO - Successfully fetched 2511 days of data for T
+2025-07-08 20:34:33,305 - INFO - Fetching data for DIS (Walt Disney Company)
+2025-07-08 20:34:33,505 - INFO - Successfully fetched 2511 days of data for DIS
+2025-07-08 20:34:33,505 - INFO - Fetching data for NEE (NextEra Energy Inc.)
+2025-07-08 20:34:33,743 - INFO - Successfully fetched 2511 days of data for NEE
+2025-07-08 20:34:33,743 - INFO - Fetching data for AMT (American Tower Corporation)
+2025-07-08 20:34:33,888 - INFO - Successfully fetched 2511 days of data for AMT
+2025-07-08 20:34:33,888 - INFO - Fetching data for LIN (Linde plc)
+2025-07-08 20:34:34,088 - INFO - Successfully fetched 2511 days of data for LIN
+2025-07-08 20:34:34,088 - INFO - Fetching data for NEM (Newmont Corporation)
+2025-07-08 20:34:34,254 - INFO - Successfully fetched 2511 days of data for NEM
+2025-07-08 20:34:34,254 - INFO - Fetching data for SPY (S&P 500 ETF)
+2025-07-08 20:34:34,400 - INFO - Successfully fetched 2511 days of data for SPY
+2025-07-08 20:34:34,400 - INFO - Fetching data for QQQ (Nasdaq 100 ETF)
+2025-07-08 20:34:34,528 - INFO - Successfully fetched 2511 days of data for QQQ
+2025-07-08 20:34:34,529 - INFO - Fetching data for IWM (Russell 2000 ETF)
+2025-07-08 20:34:34,733 - INFO - Successfully fetched 2511 days of data for IWM
+2025-07-08 20:34:34,733 - INFO - Fetching data for VTI (Total Stock Market ETF)
+2025-07-08 20:34:34,907 - INFO - Successfully fetched 2511 days of data for VTI
+2025-07-08 20:34:34,908 - INFO - Fetching data for EFA (International Developed Markets ETF)
+2025-07-08 20:34:35,038 - INFO - Successfully fetched 2511 days of data for EFA
+2025-07-08 20:34:35,038 - INFO - Fetching data for EEM (Emerging Markets ETF)
+2025-07-08 20:34:35,182 - INFO - Successfully fetched 2511 days of data for EEM
+2025-07-08 20:34:35,182 - INFO - Fetching data for TLT (Long-Term Treasury ETF)
+2025-07-08 20:34:35,325 - INFO - Successfully fetched 2511 days of data for TLT
+2025-07-08 20:34:35,325 - INFO - Fetching data for GLD (Gold ETF)
+2025-07-08 20:34:35,443 - INFO - Successfully fetched 2511 days of data for GLD
+2025-07-08 20:34:35,443 - INFO - Fetching data for VNQ (Real Estate ETF)
+2025-07-08 20:34:35,587 - INFO - Successfully fetched 2511 days of data for VNQ
+2025-07-08 20:34:35,587 - INFO - Successfully fetched data for 46 assets
+2025-07-08 20:34:35,593 - INFO - Created price matrix with shape: (2511, 46)
+2025-07-08 20:34:35,596 - INFO - Calculated returns matrix with shape: (2510, 46)
+2025-07-08 20:34:37,008 - INFO - Data saved to data directory
+2025-07-08 20:34:37,008 - INFO - === Data Fetching Pipeline Completed ===
