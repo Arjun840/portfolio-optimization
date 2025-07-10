@@ -125,36 +125,42 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
       };
 
       const response = await authService.optimizeCustomPortfolio(request, parseFloat(portfolioValue));
-      setOptimizationResult(response);
       
-      // Update portfolio holdings with optimized allocations
-      if (response.holdings && response.holdings.length > 0) {
-        const optimizedHoldings = response.holdings.map(holding => {
-          const stock = stocks.find(s => s.symbol === holding.symbol);
-          return {
-            symbol: holding.symbol,
-            name: stock?.name || holding.symbol,
-            weight: Math.round(holding.weight * 100 * 100) / 100, // Convert to percentage and round
-            expected_return: stock?.expected_return || 0,
-            volatility: stock?.volatility || 0,
-            sharpe_ratio: stock?.sharpe_ratio || 0,
-            sector: stock?.sector || 'Unknown',
-            cluster: stock?.cluster || 0
-          };
-        });
-        setPortfolioHoldings(optimizedHoldings);
+      if (response.success) {
+        setOptimizationResult(response.data);
         
-        // Update core holdings if preserve option was enabled
-        if (preserveCoreHoldings) {
-          const newCoreHoldings = optimizedHoldings
-            .filter(h => coreHoldings.includes(h.symbol))
-            .map(h => h.symbol);
-          setCoreHoldings(newCoreHoldings);
+        // Update portfolio holdings with optimized allocations
+        if (response.data.holdings && response.data.holdings.length > 0) {
+          const optimizedHoldings = response.data.holdings.map(holding => {
+            const stock = stocks.find(s => s.symbol === holding.symbol);
+            return {
+              symbol: holding.symbol,
+              name: stock?.name || holding.symbol,
+              weight: Math.round(holding.weight * 100 * 100) / 100, // Convert to percentage and round
+              expected_return: stock?.expected_return || 0,
+              volatility: stock?.volatility || 0,
+              sharpe_ratio: stock?.sharpe_ratio || 0,
+              sector: stock?.sector || 'Unknown',
+              cluster: stock?.cluster || 0
+            };
+          });
+          setPortfolioHoldings(optimizedHoldings);
+          
+          // Update core holdings if preserve option was enabled
+          if (preserveCoreHoldings) {
+            const newCoreHoldings = optimizedHoldings
+              .filter(h => coreHoldings.includes(h.symbol))
+              .map(h => h.symbol);
+            setCoreHoldings(newCoreHoldings);
+          }
         }
+      } else {
+        // Handle optimization failure
+        setErrors({ optimize: response.error || 'Optimization failed' });
       }
     } catch (error) {
       console.error('Optimization error:', error);
-      setErrors({ optimize: error.response?.data?.detail || 'Optimization failed' });
+      setErrors({ optimize: 'Network error or server unavailable' });
     } finally {
       setIsOptimizing(false);
     }
@@ -321,46 +327,42 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {portfolioHoldings.map((holding) => (
-                    <div
-                      key={holding.symbol}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div>
-                          <div className="font-medium text-gray-900">{holding.symbol}</div>
-                          <div className="text-sm text-gray-500">
-                            {(holding.expected_return * 100).toFixed(1)}% return, 
-                            {(holding.volatility * 100).toFixed(1)}% volatility
-                          </div>
+                  {portfolioHoldings.map((holding, index) => (
+                    <div key={holding.symbol} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="flex flex-col">
+                          <div className="font-semibold text-gray-900">{holding.symbol}</div>
+                          <div className="text-xs text-gray-500">{holding.sector}</div>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <input
+                            type="number"
+                            value={holding.weight}
+                            onChange={(e) => updateWeight(holding.symbol, e.target.value)}
+                            className="w-16 text-sm p-1 border rounded"
+                            step="0.1"
+                            min="0"
+                            max="100"
+                          />
+                          <span className="text-sm text-gray-500">%</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
                         {preserveCoreHoldings && (
                           <button
                             onClick={() => toggleCoreHolding(holding.symbol)}
-                            className={`text-xs px-2 py-1 rounded-full ${
+                            className={`px-2 py-1 text-xs rounded ${
                               coreHoldings.includes(holding.symbol)
                                 ? 'bg-blue-100 text-blue-700'
-                                : 'bg-gray-200 text-gray-600'
+                                : 'bg-gray-100 text-gray-500'
                             }`}
                           >
-                            {coreHoldings.includes(holding.symbol) ? 'Core' : 'Non-core'}
+                            Core
                           </button>
                         )}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="number"
-                          value={holding.weight}
-                          onChange={(e) => updateWeight(holding.symbol, e.target.value)}
-                          className="w-20 px-2 py-1 text-sm border border-gray-300 rounded"
-                          min="0"
-                          max="100"
-                          step="0.1"
-                        />
-                        <span className="text-sm text-gray-500">%</span>
                         <button
                           onClick={() => removeHolding(holding.symbol)}
-                          className="text-red-600 hover:text-red-700 p-1"
+                          className="text-red-500 hover:text-red-700"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -371,7 +373,7 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
                   {Math.abs(totalWeight - 100) > 0.1 && (
                     <button
                       onClick={normalizeWeights}
-                      className="w-full btn-secondary text-sm"
+                      className="w-full mt-3 btn-secondary text-sm"
                     >
                       Normalize to 100%
                     </button>
@@ -542,9 +544,9 @@ const CustomPortfolioBuilder = ({ stocks = [] }) => {
                   </div>
                 </div>
 
-                {optimizationResult.optimization_details.improvement_metrics && (
+                {optimizationResult.optimization_details && optimizationResult.optimization_details.improvement_metrics && (
                   <div className="text-sm text-gray-600 mb-3">
-                    <strong>Improvement:</strong> {optimizationResult.optimization_details.improvement_metrics.improvement_pct.toFixed(1)}% better Sharpe ratio
+                    <strong>Improvement:</strong> {optimizationResult.optimization_details.improvement_metrics.sharpe_improvement_pct.toFixed(1)}% better Sharpe ratio
                   </div>
                 )}
 

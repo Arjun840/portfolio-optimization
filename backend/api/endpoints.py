@@ -2,6 +2,8 @@ from fastapi import HTTPException, Depends, status
 from datetime import datetime, timedelta
 import logging
 import uuid
+import numpy as np
+import pandas as pd
 from typing import List, Dict, Any
 
 from .models import *
@@ -258,7 +260,7 @@ async def optimize_custom_portfolio(
         
         # Set up optimization based on type
         if request.optimization_type == "improve":
-            # Try to improve the portfolio
+            # Try to improve the portfolio by allowing new assets and optimizing for better risk-return
             if request.target_return:
                 result = optimizer.minimize_variance(
                     target_return=request.target_return,
@@ -268,36 +270,87 @@ async def optimize_custom_portfolio(
                 result = optimizer.maximize_sharpe_ratio(
                     constraint_type=request.constraint_level
                 )
+                
         elif request.optimization_type == "rebalance":
-            # For rebalancing, we'll optimize and then filter to existing holdings if needed
+            # For rebalancing, optimize ONLY the existing assets (no new assets allowed)
+            # Use a simplified optimization approach for better stability
+            existing_assets = list(initial_weights.keys())
+            
+            # Validate existing assets
+            valid_assets = [asset for asset in existing_assets if asset in optimizer.expected_returns.index]
+            if len(valid_assets) == 0:
+                raise HTTPException(status_code=400, detail="No valid existing assets found for rebalancing")
+            
+            # Use basic constraint level for rebalancing to avoid over-constraining
+            constraint_level = "basic" if request.constraint_level == "strict" else request.constraint_level
+            
+            # Run full optimization then filter to existing assets
             if request.target_return:
                 result = optimizer.minimize_variance(
                     target_return=request.target_return,
-                    constraint_type=request.constraint_level
+                    constraint_type=constraint_level
                 )
             else:
                 result = optimizer.maximize_sharpe_ratio(
-                    constraint_type=request.constraint_level
+                    constraint_type=constraint_level
                 )
+            
+            # Force the result to only include existing assets
+            if result is not None:
+                all_weights = result['weights'].to_dict()
+                # Keep only existing assets
+                existing_weights = {asset: all_weights.get(asset, 0) for asset in valid_assets}
+                # Renormalize to sum to 1
+                total_weight = sum(existing_weights.values())
+                if total_weight > 0:
+                    existing_weights = {k: v/total_weight for k, v in existing_weights.items()}
+                
+                # Update the result
+                result['weights'] = pd.Series(existing_weights)
+                
         else:  # risk_adjust
-            # Adjust for target risk level
+            # Adjust portfolio to achieve a target risk level
+            # Calculate current portfolio metrics
+            current_weights_array = np.array([initial_weights.get(asset, 0) for asset in optimizer.expected_returns.index])
+            current_return = np.dot(current_weights_array, optimizer.expected_returns)
+            current_volatility = np.sqrt(np.dot(current_weights_array.T, np.dot(optimizer.covariance_matrix, current_weights_array)))
+            
+            # Determine target based on request
             if request.target_return:
-                result = optimizer.minimize_variance(
-                    target_return=request.target_return,
-                    constraint_type=request.constraint_level
-                )
+                # If target_return is provided, interpret it as target volatility
+                target_volatility = request.target_return
+                # Calculate a reasonable return target for this volatility
+                target_return = current_return * (target_volatility / current_volatility) if current_volatility > 0 else current_return
             else:
-                result = optimizer.minimize_variance(
-                    constraint_type=request.constraint_level
-                )
+                # Default: reduce risk by 10% while maintaining similar return
+                target_volatility = current_volatility * 0.9
+                target_return = current_return * 0.95  # Slightly lower return for lower risk
+            
+            # Use minimize_variance to achieve the target
+            result = optimizer.minimize_variance(
+                target_return=target_return,
+                constraint_type=request.constraint_level
+            )
         
         # Process optimization result
+        if result is None:
+            raise HTTPException(status_code=500, detail=f"Optimization failed for {request.optimization_type} - no result returned")
+        
+        if 'weights' not in result:
+            raise HTTPException(status_code=500, detail=f"Optimization result missing weights for {request.optimization_type}")
+            
         optimized_weights_series = result['weights']
         optimized_weights = optimized_weights_series.to_dict()
         
-        # Apply custom portfolio logic
-        if request.optimization_type == "rebalance" and not request.allow_new_assets:
-            # Keep only original assets for rebalancing
+        # Apply custom portfolio logic based on optimization type
+        if request.optimization_type == "rebalance":
+            # For rebalancing, ensure we only have the original assets
+            # (this should already be handled by the pre-filtering above)
+            original_assets = set(initial_weights.keys())
+            optimized_weights = {k: v for k, v in optimized_weights.items() if k in original_assets}
+            
+        elif request.optimization_type == "improve" and not request.allow_new_assets:
+            # If improving but not allowing new assets, filter to original
             original_assets = set(initial_weights.keys())
             optimized_weights = {k: v for k, v in optimized_weights.items() if k in original_assets}
             # Renormalize weights
@@ -365,17 +418,34 @@ async def optimize_custom_portfolio(
         # Sort holdings by weight
         holdings.sort(key=lambda x: x.weight, reverse=True)
         
-        # Calculate improvement metrics
+        # Calculate improvement metrics with more detailed analysis
         improvement_metrics = {
             "original_sharpe": original_metrics["sharpe_ratio"],
             "optimized_sharpe": optimized_metrics["sharpe_ratio"],
-            "improvement_pct": ((optimized_metrics["sharpe_ratio"] - original_metrics["sharpe_ratio"]) / abs(original_metrics["sharpe_ratio"]) * 100) if original_metrics["sharpe_ratio"] != 0 else 0,
+            "sharpe_improvement_pct": ((optimized_metrics["sharpe_ratio"] - original_metrics["sharpe_ratio"]) / abs(original_metrics["sharpe_ratio"]) * 100) if original_metrics["sharpe_ratio"] != 0 else 0,
             "original_return": original_metrics["expected_return"],
             "optimized_return": optimized_metrics["expected_return"],
+            "return_change_pct": ((optimized_metrics["expected_return"] - original_metrics["expected_return"]) / abs(original_metrics["expected_return"]) * 100) if original_metrics["expected_return"] != 0 else 0,
             "original_volatility": original_metrics["volatility"],
             "optimized_volatility": optimized_metrics["volatility"],
-            "optimization_type": request.optimization_type
+            "volatility_change_pct": ((optimized_metrics["volatility"] - original_metrics["volatility"]) / original_metrics["volatility"] * 100) if original_metrics["volatility"] != 0 else 0,
+            "optimization_type": request.optimization_type,
+            "original_assets": len(initial_weights),
+            "optimized_assets": len(significant_weights),
+            "assets_added": len(set(significant_weights.keys()) - set(initial_weights.keys())),
+            "assets_removed": len(set(initial_weights.keys()) - set(significant_weights.keys()))
         }
+        
+        # Add optimization-specific metrics
+        if request.optimization_type == "rebalance":
+            improvement_metrics["rebalance_message"] = f"Rebalanced {len(initial_weights)} existing assets without adding new holdings"
+        elif request.optimization_type == "improve":
+            if improvement_metrics["assets_added"] > 0:
+                improvement_metrics["improve_message"] = f"Added {improvement_metrics['assets_added']} new assets to improve portfolio performance"
+            else:
+                improvement_metrics["improve_message"] = "Optimized existing holdings without adding new assets"
+        elif request.optimization_type == "risk_adjust":
+            improvement_metrics["risk_adjust_message"] = f"Adjusted portfolio risk level. Volatility changed by {improvement_metrics['volatility_change_pct']:.1f}%"
         
         # Create portfolio response
         portfolio = OptimizedPortfolio(
@@ -394,7 +464,7 @@ async def optimize_custom_portfolio(
                 "allow_new_assets": request.allow_new_assets,
                 "preserve_core_holdings": request.preserve_core_holdings,
                 "optimization_status": result.get('success', True),
-                "optimization_message": result.get('message', 'Custom portfolio optimization completed successfully'),
+                "optimization_message": result.get('message', f'Custom portfolio optimization ({request.optimization_type}) completed successfully'),
                 "improvement_metrics": improvement_metrics
             },
             created_at=datetime.now()

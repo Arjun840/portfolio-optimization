@@ -138,9 +138,15 @@ class AuthService {
   async optimizeCustomPortfolio(request, portfolioValue = 100000) {
     try {
       const response = await this.api.post(`/optimize/custom?portfolio_value=${portfolioValue}`, request);
-      return response.data;
+      return {
+        success: true,
+        data: response.data,
+      };
     } catch (error) {
-      throw error;
+      return {
+        success: false,
+        error: error.response?.data?.detail || 'Custom portfolio optimization failed',
+      };
     }
   }
 

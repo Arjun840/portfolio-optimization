@@ -66,12 +66,12 @@ class CustomHolding(BaseModel):
 
 class CustomPortfolioRequest(BaseModel):
     holdings: List[CustomHolding] = Field(..., description="Initial portfolio holdings")
-    optimization_type: str = Field("improve", description="improve, rebalance, risk_adjust")
-    target_return: Optional[float] = Field(None, description="Target annual return (0.1 = 10%)")
+    optimization_type: str = Field("improve", description="improve (add new assets to optimize), rebalance (only adjust existing assets), risk_adjust (target specific risk level)")
+    target_return: Optional[float] = Field(None, description="For improve/rebalance: target annual return (0.1 = 10%). For risk_adjust: target volatility (0.15 = 15%)")
     max_position_size: Optional[float] = Field(0.3, description="Maximum weight per asset")
     constraint_level: str = Field("enhanced", description="basic, enhanced, strict")
     return_method: str = Field("ml_enhanced", description="historical, enhanced, ml_enhanced, conservative")
-    allow_new_assets: bool = Field(True, description="Allow adding new assets to portfolio")
+    allow_new_assets: bool = Field(True, description="Allow adding new assets to portfolio (ignored for rebalance)")
     preserve_core_holdings: bool = Field(False, description="Keep some holdings fixed")
     core_holdings: Optional[List[str]] = Field(None, description="Assets to keep in portfolio")
 
