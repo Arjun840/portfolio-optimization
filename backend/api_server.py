@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import logging
+import os
 
 # Import API components
 from api.models import *
@@ -19,12 +20,29 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Configure CORS origins based on environment
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React development
+    "http://localhost:5173",  # Vite development
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+]
+
+# Add production origins from environment variable
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    ALLOWED_ORIGINS.append(frontend_url)
+
+# For development, allow all origins
+if os.getenv("ENVIRONMENT") == "development":
+    ALLOWED_ORIGINS = ["*"]
+
 # CORS middleware for frontend integration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure with specific origins in production
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 

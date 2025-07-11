@@ -64,15 +64,15 @@ class PortfolioOptimizer:
         try:
             print("📊 Loading portfolio optimization data...")
             
-            # Load returns data
-            self.returns = pd.read_pickle(f'{self.data_dir}/cleaned_returns.pkl')
-            self.prices = pd.read_pickle(f'{self.data_dir}/cleaned_prices.pkl')
+            # Load returns data using CSV files for compatibility
+            self.returns = pd.read_csv(f'{self.data_dir}/cleaned_returns.csv', index_col=0, parse_dates=True)
+            self.prices = pd.read_csv(f'{self.data_dir}/cleaned_prices.csv', index_col=0, parse_dates=True)
             
             # Load cluster analysis
             self.cluster_data = pd.read_csv(f'{self.data_dir}/asset_selection_framework.csv')
             
-            # Load asset features
-            self.asset_features = pd.read_pickle(f'{self.data_dir}/asset_features.pkl')
+            # Load asset features using CSV for compatibility
+            self.asset_features = pd.read_csv(f'{self.data_dir}/asset_features.csv')
             
             print(f"✅ Loaded data:")
             print(f"   • Returns: {self.returns.shape}")

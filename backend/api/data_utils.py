@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 def load_stock_data() -> Tuple[Dict[str, Any], pd.DataFrame, Dict[str, Any]]:
     """Load and prepare stock data with cluster information"""
     try:
-        # Load portfolio data similar to app.py
-        prices = pd.read_pickle('data/cleaned_prices.pkl')
-        returns = pd.read_pickle('data/cleaned_returns.pkl')
+        # Load portfolio data using CSV files for compatibility
+        prices = pd.read_csv('data/cleaned_prices.csv', index_col=0, parse_dates=True)
+        returns = pd.read_csv('data/cleaned_returns.csv', index_col=0, parse_dates=True)
         
         # Calculate statistics
         annual_returns = returns.mean() * 252

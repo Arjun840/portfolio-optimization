@@ -1,8 +1,4 @@
-# Use Python 3.9 slim image for smaller size
-FROM python:3.9-slim
-
-# Set working directory
-WORKDIR /app
+FROM python:3.12-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -10,32 +6,29 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first (for better caching)
-COPY aws_requirements.txt .
+# Set working directory
+WORKDIR /app
+
+# Copy requirements first for better caching
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r aws_requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY api/ ./api/
-COPY scripts/ ./scripts/
-COPY api_server.py .
-COPY lambda_deployment.py .
+COPY . .
 
-# Create data directory for mounted volumes
-RUN mkdir -p /app/data
-
-# Set environment variables
-ENV PYTHONPATH=/app
-ENV PORT=8000
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /app
+USER app
 
 # Expose port
 EXPOSE 8000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/ || exit 1
+    CMD curl -f http://localhost:8000/health || exit 1
 
-# Run the application
-CMD ["python", "-m", "uvicorn", "api_server:app", "--host", "0.0.0.0", "--port", "8000"] 
+# Start the application
+CMD ["uvicorn", "api_server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
